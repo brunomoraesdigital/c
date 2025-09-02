@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -12,13 +13,13 @@
       --texto: #333333;
       --destaque: #1f6feb;
     }
-    
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       background: linear-gradient(180deg, #f6f8fa, #f0f3f6);
@@ -26,7 +27,7 @@
       color: var(--texto);
       line-height: 1.6;
     }
-    
+
     .container {
       max-width: 900px;
       margin: 0 auto;
@@ -36,7 +37,7 @@
       box-shadow: 0 6px 20px rgba(12, 18, 31, 0.1);
       overflow: hidden;
     }
-    
+
     header {
       display: flex;
       flex-direction: row;
@@ -47,23 +48,23 @@
       border-bottom: 1px solid var(--borda);
       transition: background 0.3s;
     }
-    
+
     .titulo-container {
       display: flex;
       flex-direction: column;
     }
-    
+
     h1 {
       font-size: 18px;
       margin: 0;
       font-weight: 600;
     }
-    
+
     .botoes {
       display: flex;
       gap: 8px;
     }
-    
+
     .botao {
       background: #ffffff;
       border: 1px solid var(--borda);
@@ -76,65 +77,68 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     .botao:hover {
       background: #f9f9f9;
       transform: translateY(-1px);
     }
-    
+
     .botao.ativo {
       background: #eef9d8;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
     }
-    
+
     .area {
       display: flex;
       gap: 12px;
       padding: 16px;
       transition: background 0.3s;
     }
-    
+
     .barra-lateral {
       width: 220px;
       border-right: 1px dashed var(--borda);
       padding-right: 12px;
     }
-    
+
     .info {
       font-size: 13px;
       color: #555;
     }
-    
+
     .info p {
       margin-bottom: 8px;
     }
-    
+
     .editor {
       flex: 1;
       display: flex;
       flex-direction: column;
     }
-    
+
     /* Container das abas com scroll horizontal */
     .abas-container {
       position: relative;
       border-bottom: 1px solid var(--borda);
       background: #fafafa;
     }
-    
+
     .abas {
       display: flex;
       gap: 6px;
       padding: 6px;
       overflow-x: auto;
-      scrollbar-width: none; /* Firefox */
-      -ms-overflow-style: none; /* IE/Edge */
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE/Edge */
     }
-    
+
     .abas::-webkit-scrollbar {
-      display: none; /* Chrome, Safari, Opera */
+      display: none;
+      /* Chrome, Safari, Opera */
     }
-    
+
     /* Indicador de mais conteúdo (setas) */
     .scroll-indicator {
       position: absolute;
@@ -144,28 +148,28 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(90deg, rgba(250,250,250,0.9) 0%, rgba(250,250,250,0.5) 100%);
+      background: linear-gradient(90deg, rgba(250, 250, 250, 0.9) 0%, rgba(250, 250, 250, 0.5) 100%);
       z-index: 1;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s;
       cursor: pointer;
     }
-    
+
     .scroll-indicator.left {
       left: 0;
-      background: linear-gradient(90deg, rgba(250,250,250,0.9) 0%, rgba(250,250,250,0.5) 100%);
+      background: linear-gradient(90deg, rgba(250, 250, 250, 0.9) 0%, rgba(250, 250, 250, 0.5) 100%);
     }
-    
+
     .scroll-indicator.right {
       right: 0;
-      background: linear-gradient(270deg, rgba(250,250,250,0.9) 0%, rgba(250,250,250,0.5) 100%);
+      background: linear-gradient(270deg, rgba(250, 250, 250, 0.9) 0%, rgba(250, 250, 250, 0.5) 100%);
     }
-    
+
     .abas-container:hover .scroll-indicator {
       opacity: 1;
     }
-    
+
     .aba {
       padding: 8px 12px;
       border: 1px solid var(--borda);
@@ -181,40 +185,86 @@
       min-width: 80px;
       text-align: center;
     }
-    
+
     .aba:hover {
       background: #e0e0e0;
     }
-    
+
     .aba.ativa {
       background: white;
       border-bottom: 1px solid white;
       font-weight: 600;
-      box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
     }
-    
+
     .aba[contenteditable="true"] {
       min-width: 80px;
     }
-    
+
     /* Cores das abas */
-    .aba[data-id="1"] { background: #fff; }
-    .aba[data-id="2"] { background: #ffd6d6; }
-    .aba[data-id="3"] { background: #ffe5b4; }
-    .aba[data-id="4"] { background: #fffacd; }
-    .aba[data-id="5"] { background: #d9fdd3; }
-    .aba[data-id="6"] { background: #d6eaff; }
-    .aba[data-id="7"] { background: #dcd6ff; }
-    .aba[data-id="8"] { background: #f0d6ff; }
-    
-    .aba.ativa[data-id="1"] { background: #fff; }
-    .aba.ativa[data-id="2"] { background: #ffc8c8; }
-    .aba.ativa[data-id="3"] { background: #ffdd9e; }
-    .aba.ativa[data-id="4"] { background: #fff6b3; }
-    .aba.ativa[data-id="5"] { background: #c5fcbd; }
-    .aba.ativa[data-id="6"] { background: #c0e2ff; }
-    .aba.ativa[data-id="7"] { background: #d0c8ff; }
-    .aba.ativa[data-id="8"] { background: #e6c2ff; }
+    .aba[data-id="1"] {
+      background: #fff;
+    }
+
+    .aba[data-id="2"] {
+      background: #ffd6d6;
+    }
+
+    .aba[data-id="3"] {
+      background: #ffe5b4;
+    }
+
+    .aba[data-id="4"] {
+      background: #fffacd;
+    }
+
+    .aba[data-id="5"] {
+      background: #d9fdd3;
+    }
+
+    .aba[data-id="6"] {
+      background: #d6eaff;
+    }
+
+    .aba[data-id="7"] {
+      background: #dcd6ff;
+    }
+
+    .aba[data-id="8"] {
+      background: #f0d6ff;
+    }
+
+    .aba.ativa[data-id="1"] {
+      background: #fff;
+    }
+
+    .aba.ativa[data-id="2"] {
+      background: #ffc8c8;
+    }
+
+    .aba.ativa[data-id="3"] {
+      background: #ffdd9e;
+    }
+
+    .aba.ativa[data-id="4"] {
+      background: #fff6b3;
+    }
+
+    .aba.ativa[data-id="5"] {
+      background: #c5fcbd;
+    }
+
+    .aba.ativa[data-id="6"] {
+      background: #c0e2ff;
+    }
+
+    .aba.ativa[data-id="7"] {
+      background: #d0c8ff;
+    }
+
+    .aba.ativa[data-id="8"] {
+      background: #e6c2ff;
+    }
 
     .conteudo {
       height: 400px;
@@ -230,12 +280,12 @@
       white-space: pre-wrap;
       margin-bottom: 12px;
     }
-    
+
     .conteudo.vazio {
       color: #aaa;
       font-style: italic;
     }
-    
+
     .rodape {
       padding: 10px 12px;
       border-top: 1px solid var(--borda);
@@ -246,7 +296,7 @@
       color: #555;
       transition: background 0.3s;
     }
-    
+
     .btn-acao {
       background: var(--destaque);
       color: white;
@@ -258,12 +308,12 @@
       font-weight: 500;
       transition: all 0.2s;
     }
-    
+
     .btn-acao:hover {
       background: #0e5fc5;
       transform: translateY(-1px);
     }
-    
+
     .copyright {
       display: flex;
       flex-wrap: wrap;
@@ -271,112 +321,113 @@
       align-items: center;
       justify-content: flex-end;
     }
-    
+
     .copyright a {
       text-decoration: none;
       color: #666;
       transition: color 0.2s;
       white-space: nowrap;
     }
-    
+
     .copyright a:hover {
       color: var(--destaque);
     }
-    
+
     #status {
       font-size: 12px;
       color: #666;
     }
-    
+
     /* Responsividade */
     @media (max-width: 768px) {
       body {
         padding: 12px;
       }
-      
+
       header {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
       }
-      
+
       .botoes {
         width: 100%;
         justify-content: flex-end;
       }
-      
+
       .barra-lateral {
         display: none;
       }
-      
+
       .area {
         padding: 12px;
       }
-      
+
       .conteudo {
         height: 300px;
-        font-size: 16px; /* Melhor leitura em mobile */
+        font-size: 16px;
+        /* Melhor leitura em mobile */
       }
-      
+
       .aba {
         padding: 6px 10px;
         font-size: 13px;
         min-width: 70px;
       }
-      
+
       .copyright {
         flex-direction: column;
         align-items: flex-end;
         gap: 4px;
       }
-	  .comoArmazena {
-	  font-size: 12px;
-    }
-    
-    @media (max-width: 480px) {
-      .botoes {
-        flex-wrap: wrap;
-        gap: 6px;
-      }
-      
-      .botao {
-        flex: 1;
-        min-width: calc(50% - 6px);
-        padding: 8px;
-      }
-      
-      .abas {
-        padding: 4px;
-      }
-      
-      .aba {
-        min-width: 60px;
-        font-size: 12px;
-        padding: 6px 8px;
-      }
-      
-      .conteudo {
-        height: 250px;
-        padding: 12px;
-      }  
-	  
-      .rodape {
-        flex-direction: column;
-        gap: 10px;
-        align-items: stretch;
-      }
-      
-      .copyright {
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-	  
-    }
-    
 
+      .comoArmazena {
+        font-size: 12px;
+      }
+
+      @media (max-width: 480px) {
+        .botoes {
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+
+        .botao {
+          flex: 1;
+          min-width: calc(50% - 6px);
+          padding: 8px;
+        }
+
+        .abas {
+          padding: 4px;
+        }
+
+        .aba {
+          min-width: 60px;
+          font-size: 12px;
+          padding: 6px 8px;
+        }
+
+        .conteudo {
+          height: 250px;
+          padding: 12px;
+        }
+
+        .rodape {
+          flex-direction: column;
+          gap: 10px;
+          align-items: stretch;
+        }
+
+        .copyright {
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+
+      }
   </style>
 </head>
+
 <body>
   <div class="container" role="application">
     <header id="header">
@@ -418,7 +469,8 @@
       </aside>
 
       <main class="editor">
-        <div id="conteudo" class="conteudo vazio" contenteditable="true" spellcheck="true" aria-label="Área de edição">Comece a escrever aqui...</div>
+        <div id="conteudo" class="conteudo vazio" contenteditable="true" spellcheck="true" aria-label="Área de edição">
+          Comece a escrever aqui...</div>
         <div class="rodape" id="rodape">
           <div id="status">Salvando...</div>
           <div>
@@ -426,11 +478,13 @@
           </div>
         </div>
         <div class="copyright">
-          <a href="https://bmfolio.web.app/" title="" target="_blank" rel="noopener noreferrer">
-			<span>© <span id="ano-atual">2025</span> Bruno Moraes</span>
-		  </a>
-          <a href="licenca-agplv3.html" title="Visualizar licença AGPLv3" target="_blank" rel="noopener noreferrer">AGPL-3.0 license</a>
-          <a href="#" title="Saiba como suas informações são armazenadas" class="comoArmazena">Como as informações são armazenadas?</a>
+          <a href="https://bmfolio.web.app/" title="visualizar o site bmfolio" target="_blank" rel="noopener noreferrer">
+            <span>© <span id="ano-atual">2025</span> Bruno Moraes</span>
+          </a>
+          <a href="licenca-agplv3.html" title="Visualizar licença AGPLv3" target="_blank"
+            rel="noopener noreferrer">AGPL-3.0 license</a>
+          <a href="como-armazenamos.html" title="Saiba como suas informações são armazenadas" class="comoArmazena" target="_blank" rel="noopener noreferrer">Como as informações são
+            armazenadas?</a>
         </div>
       </main>
     </div>
@@ -453,14 +507,14 @@
     let abaAtual = "1";
 
     const cores = {
-      "1":"#f2f2f2",
-      "2":"#ffd6d6",
-      "3":"#ffe5b4",
-      "4":"#fffacd",
-      "5":"#d9fdd3",
-      "6":"#d6eaff",
-      "7":"#dcd6ff",
-      "8":"#f0d6ff"
+      "1": "#f2f2f2",
+      "2": "#ffd6d6",
+      "3": "#ffe5b4",
+      "4": "#fffacd",
+      "5": "#d9fdd3",
+      "6": "#d6eaff",
+      "7": "#dcd6ff",
+      "8": "#f0d6ff"
     };
 
     // Carrega e garante que existam as 8 chaves (evita erro quando localStorage tem versão antiga)
@@ -495,7 +549,7 @@
 
     // aplica os títulos das abas a partir do localStorage (sincroniza visual)
     function aplicarTitulos(dados) {
-      document.querySelectorAll(".aba").forEach(function(aba){
+      document.querySelectorAll(".aba").forEach(function (aba) {
         const id = aba.dataset.id;
         if (dados[id] && dados[id].titulo) {
           aba.textContent = dados[id].titulo;
@@ -520,7 +574,7 @@
 
       statusSalvamento.textContent = dados[id].data ? 'Última modificação: ' + dados[id].data : 'Nenhum conteúdo salvo ainda.';
 
-      document.querySelectorAll(".aba").forEach(function(btn){ btn.classList.remove("ativa"); });
+      document.querySelectorAll(".aba").forEach(function (btn) { btn.classList.remove("ativa"); });
       const botaoAtivo = document.querySelector(`.aba[data-id="${id}"]`);
       if (botaoAtivo) botaoAtivo.classList.add("ativa");
 
@@ -533,7 +587,7 @@
 
     function salvarParaLocalStorage() {
       if (temporizadorSalvamento) clearTimeout(temporizadorSalvamento);
-      temporizadorSalvamento = setTimeout(function() {
+      temporizadorSalvamento = setTimeout(function () {
         try {
           const dados = carregarDados();
           // garante entrada existente (caso tenha sido removida por alguma versão anterior)
@@ -556,14 +610,14 @@
     }
 
     // Eventos formatação (mantive seus botões e atalhos)
-    btnNegrito.addEventListener('click', function() { aplicarComando('bold'); });
-    btnSublinhado.addEventListener('click', function() { aplicarComando('underline'); });
-    btnRiscado.addEventListener('click', function() { aplicarComando('strikeThrough'); });
-    btnLista.addEventListener('click', function() { aplicarComando('insertUnorderedList'); });
+    btnNegrito.addEventListener('click', function () { aplicarComando('bold'); });
+    btnSublinhado.addEventListener('click', function () { aplicarComando('underline'); });
+    btnRiscado.addEventListener('click', function () { aplicarComando('strikeThrough'); });
+    btnLista.addEventListener('click', function () { aplicarComando('insertUnorderedList'); });
 
     // Placeholder: ao focar, limpa; porém só volta ao usar "Limpar" (conforme pediu)
-    areaNotas.addEventListener("focus", function(){
-      if (areaNotas.classList.contains("vazio")){
+    areaNotas.addEventListener("focus", function () {
+      if (areaNotas.classList.contains("vazio")) {
         areaNotas.textContent = "";
         areaNotas.classList.remove("vazio");
       }
@@ -571,14 +625,14 @@
     // removi o blur que reintroduzia o placeholder automaticamente
 
     // Colar sem formatação
-    areaNotas.addEventListener("paste", function(e){
+    areaNotas.addEventListener("paste", function (e) {
       e.preventDefault();
       const texto = (e.clipboardData || window.clipboardData).getData("text");
       document.execCommand("insertText", false, texto);
     });
 
     // Limpar (apaga conteúdo desta aba e reaplica placeholder)
-    btnLimpar.addEventListener('click', function() {
+    btnLimpar.addEventListener('click', function () {
       if (confirm('Limpar todo o conteúdo salvo desta aba?')) {
         const dados = carregarDados();
         if (!dados[abaAtual]) dados[abaAtual] = { titulo: "Bloco " + abaAtual, conteudo: "", data: "" };
@@ -595,10 +649,10 @@
     areaNotas.addEventListener('input', salvarParaLocalStorage);
 
     // Atalhos de teclado
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       if ((e.ctrlKey || e.metaKey) && areaNotas.contains(document.activeElement)) {
         const tecla = e.key.toLowerCase();
-        switch(tecla){
+        switch (tecla) {
           case 'b': e.preventDefault(); aplicarComando('bold'); break;
           case 'u': e.preventDefault(); aplicarComando('underline'); break;
           case 's': e.preventDefault(); aplicarComando('strikeThrough'); break;
@@ -608,7 +662,7 @@
     });
 
     // Troca de aba (clique)
-    abas.addEventListener("click", function(e){
+    abas.addEventListener("click", function (e) {
       const alvo = e.target;
       if (alvo && alvo.classList && alvo.classList.contains("aba")) {
         // salva conteúdo antes de trocar
@@ -618,17 +672,17 @@
     });
 
     // Editar título da aba -> salva título no localStorage
-    document.querySelectorAll(".aba").forEach(function(aba){
-      aba.addEventListener("input", function(){
+    document.querySelectorAll(".aba").forEach(function (aba) {
+      aba.addEventListener("input", function () {
         const dados = carregarDados();
         const id = this.dataset.id;
         if (!dados[id]) dados[id] = { titulo: "Bloco " + id, conteudo: "", data: "" };
         dados[id].titulo = this.textContent.trim() || ("Bloco " + id);
         salvarDados(dados);
       });
-      
+
       // Selecionar todo o texto ao focar na aba para edição
-      aba.addEventListener("click", function(e) {
+      aba.addEventListener("click", function (e) {
         if (this.isContentEditable) {
           // Pequeno delay para garantir que o foco foi estabelecido
           setTimeout(() => {
@@ -643,11 +697,11 @@
     });
 
     // Inicializar: carregar dados, aplicar títulos e restaurar aba 1 (ou última usada no futuro)
-    (function inicializar(){
+    (function inicializar() {
       const dados = carregarDados();
       aplicarTitulos(dados);
       restaurarAba("1");
-      
+
       // Definir ano atual no copyright
       document.getElementById('ano-atual').textContent = new Date().getFullYear();
     })();
@@ -657,7 +711,7 @@
       const container = document.querySelector('.abas');
       const leftIndicator = document.querySelector('.scroll-indicator.left');
       const rightIndicator = document.querySelector('.scroll-indicator.right');
-      
+
       // Mostrar/ocultar indicadores conforme a posição do scroll
       if (container.scrollLeft > 0) {
         leftIndicator.style.opacity = '1';
@@ -666,7 +720,7 @@
         leftIndicator.style.opacity = '0';
         leftIndicator.style.pointerEvents = 'none';
       }
-      
+
       if (container.scrollLeft < container.scrollWidth - container.clientWidth) {
         rightIndicator.style.opacity = '1';
         rightIndicator.style.pointerEvents = 'auto';
@@ -677,22 +731,23 @@
     }
 
     // Adicionar event listeners para os indicadores de scroll
-    document.querySelector('.scroll-indicator.left').addEventListener('click', function() {
+    document.querySelector('.scroll-indicator.left').addEventListener('click', function () {
       document.querySelector('.abas').scrollBy({ left: -100, behavior: 'smooth' });
     });
-    
-    document.querySelector('.scroll-indicator.right').addEventListener('click', function() {
+
+    document.querySelector('.scroll-indicator.right').addEventListener('click', function () {
       document.querySelector('.abas').scrollBy({ left: 100, behavior: 'smooth' });
     });
-    
+
     // Atualizar indicadores quando houver scroll
     document.querySelector('.abas').addEventListener('scroll', atualizarIndicadoresScroll);
-    
+
     // Atualizar indicadores quando a janela for redimensionada
     window.addEventListener('resize', atualizarIndicadoresScroll);
-    
+
     // Inicializar indicadores
     setTimeout(atualizarIndicadoresScroll, 100);
   </script>
 </body>
+
 </html>

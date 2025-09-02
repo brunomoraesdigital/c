@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Como seus dados são armazenados - Bloco de Notas</title>
+  <style>
+    :root {
+      --fundo: #fffefd;
+      --accent: #f2f2f2;
+      --borda: #dedede;
+      --texto: #333333;
+      --destaque: #1f6feb;
+      --sombra: rgba(12, 18, 31, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(180deg, #f6f8fa, #f0f3f6);
+      padding: 20px;
+      color: var(--texto);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      margin: 20px auto;
+      background: var(--fundo);
+      border: 1px solid var(--borda);
+      border-radius: 12px;
+      box-shadow: 0 6px 20px var(--sombra);
+      overflow: hidden;
+    }
+
+    header {
+      padding: 20px;
+      background: var(--accent);
+      border-bottom: 1px solid var(--borda);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: var(--destaque);
+    }
+
+    .intro {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .content {
+      padding: 25px;
+    }
+
+    .info-box {
+      background: #f9f9f9;
+      border-left: 4px solid var(--destaque);
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin: 20px 0 15px;
+      color: var(--destaque);
+    }
+
+    p {
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 25px 0;
+    }
+
+    .feature {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--borda);
+    }
+
+    .feature h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: var(--destaque);
+      display: flex;
+      align-items: center;
+    }
+
+    .feature h3::before {
+      content: "✓";
+      margin-right: 10px;
+      color: #28a745;
+      font-weight: bold;
+    }
+
+    .faq {
+      margin-top: 30px;
+    }
+
+    .faq-item {
+      margin-bottom: 15px;
+      border: 1px solid var(--borda);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 15px;
+      background: #f8f9fa;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      padding: 0 15px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-answer.active {
+      padding: 15px;
+      max-height: 300px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid var(--borda);
+      background: var(--accent);
+    }
+
+    .btn-voltar {
+      display: inline-block;
+      padding: 12px 24px;
+      background: var(--destaque);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .btn-voltar:hover {
+      background: #0e5fc5;
+    }
+
+    /* Responsividade para dispositivos móveis */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        margin: 10px auto;
+      }
+
+      header {
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .intro {
+        font-size: 16px;
+      }
+
+      .content {
+        padding: 15px;
+      }
+
+      .info-box {
+        padding: 15px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 22px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      .feature {
+        padding: 15px;
+      }
+
+      .faq-question {
+        padding: 12px;
+        font-size: 15px;
+      }
+    }
+        .copyright {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .copyright a {
+      text-decoration: none;
+      color: blue;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .copyright a:hover {
+      color: var(--destaque);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Como seus dados são armazenados</h1>
+      <p class="intro">Entenda de forma simples e transparente como suas informações são protegidas</p>
+    </header>
+
+    <div class="content">
+      <div class="info-box">
+        <p>Seus dados ficam armazenados <strong>apenas no seu próprio dispositivo</strong>, não sendo enviados para
+          nenhum servidor externo. Isso garante que suas informações estejam sempre sob seu controle.</p>
+      </div>
+
+      <h2>O que é armazenamento local?</h2>
+      <p>O armazenamento local é uma funcionalidade segura dos navegadores modernos que permite que sites guardem
+        informações diretamente no seu dispositivo - seja computador, tablet ou celular.</p>
+
+      <p>É como se o navegador criasse uma "gaveta privada" onde apenas o site que originou os dados pode acessá-los.
+      </p>
+
+      <h2>Por que isso é seguro?</h2>
+
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>Privacidade garantida</h3>
+          <p>Seus dados ficam restritos ao seu navegador e dispositivo. Nenhuma outra pessoa, site ou aplicativo pode
+            acessar essas informações.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Sem servidores externos</h3>
+          <p>Suas anotações nunca saem do seu dispositivo. Não são enviadas para a internet nem armazenadas em
+            servidores de terceiros.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Proteção contra vazamentos</h3>
+          <p>Como as informações não transitam pela internet, não há risco de interceptação durante transferências ou
+            ataques a servidores.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Controle total</hh3>
+            <p>Você pode limpar os dados a qualquer momento através das configurações do seu navegador, mantendo total
+              controle sobre suas informações.</p>
+        </div>
+      </div>
+
+      <h2>Perguntas frequentes</h2>
+
+      <div class="faq">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Outros sites podem acessar minhas anotações?
+            <span>+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Não. Cada site tem seu próprio espaço isolado no navegador. Os dados do Bloco de Notas só podem ser
+              acessados pelo próprio Bloco de Notas.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            O que acontece se eu limpar os dados do navegador?
+            <span>+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Se você limpar os dados do navegador, suas anotações serão removidas. Por isso, se você precisa de backup
+              permanente, recomendamos salvar cópias importantes em outro local.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Meus dados estão criptografados?
+            <span>+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Os navegadores modernos oferecem proteção para dados armazenados localmente. No entanto, para maior
+              segurança em dispositivos compartilhados, recomendamos usar os recursos de proteção por senha do seu
+              sistema operacional.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Posso recuperar meus dados se trocar de dispositivo?
+            <span>+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Como os dados ficam apenas no dispositivo onde foram criados, não é possível acessá-los em outros
+              dispositivos automaticamente. Para isso, você precisaria fazer backup manual das suas anotações.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer copyright">
+      <a href="https://bmfolio.web.app/" title="visualizar o site bmfolio" target="_blank" rel="noopener noreferrer">
+        <span>© <span id="ano-atual">2025</span> Bruno Moraes</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Inicializar: carregar dados, aplicar títulos e restaurar aba 1 (ou última usada no futuro)
+    (function inicializar() {
+      const dados = carregarDados();
+      aplicarTitulos(dados);
+      restaurarAba("1");
+
+      // Definir ano atual no copyright
+      document.getElementById('ano-atual').textContent = new Date().getFullYear();
+    })();
+    
+    function toggleFaq(element) {
+      const answer = element.nextElementSibling;
+      const isActive = answer.classList.contains('active');
+
+      // Fecha todas as FAQs
+      document.querySelectorAll('.faq-answer').forEach(item => {
+        item.classList.remove('active');
+      });
+
+      document.querySelectorAll('.faq-question span').forEach(item => {
+        item.textContent = '+';
+      });
+
+      // Abre a FAQ clicada se não estava ativa
+      if (!isActive) {
+        answer.classList.add('active');
+        element.querySelector('span').textContent = '−';
+      }
+    }
+  </script>
+</body>
+
+</html>
