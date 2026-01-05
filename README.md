@@ -1,7 +1,6 @@
 # 🎮 Estudos em C para Desenvolvimento de Jogos
 
-Este repositório marca o início do meu aprendizado em C, linguagem que considero uma base fundamental para o desenvolvimento de software e, especialmente, para o universo dos jogos. Muitas das tecnologias modernas utilizadas em game development possuem raízes diretas no C, seja por meio de engines como a Unreal Engine (C++) ou de bibliotecas amplamente utilizadas como SDL e Raylib. 
-🗓️ Em 05/01/2026
+Este repositório marca o início do meu aprendizado em C, linguagem que considero uma base fundamental para o desenvolvimento de software e, especialmente, para o universo dos jogos. Muitas das tecnologias modernas utilizadas em game development possuem raízes diretas no C, seja por meio de engines como a Unreal Engine (C++) ou de bibliotecas amplamente utilizadas como SDL e Raylib. (Em 05/01/2026)
 
 ## 🎯 Objetivo
 
