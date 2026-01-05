@@ -19,6 +19,10 @@ O repositório contém exercícios, testes e pequenos projetos em C, além do AP
 [![Download APK](https://img.shields.io/badge/Baixar-APK_Android-3ddc84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/brunomoraesdigital/c/releases/latest/download/dinorunc.apk)
 
 ![Downloads](https://img.shields.io/github/downloads/brunomoraesdigital/c/latest/total?label=Downloads)
+[![Releases](https://img.shields.io/badge/Releases-ver-blue?style=flat)](https://github.com/brunomoraesdigital/c/releases)
+
+> ⚠️ APK instalado fora da Play Store pode gerar aviso de segurança.  
+> O código-fonte está disponível no repositório e nas Releases.
 
 ## 👨🏻‍💻 Criado por Bruno Moraes
 
