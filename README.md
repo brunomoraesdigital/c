@@ -15,6 +15,8 @@ Os estudos são realizados no Android utilizando o C4droid para desenvolvimento 
 O repositório contém exercícios, testes e pequenos projetos em C, além do APK gerado pelo C4droid para download.
 
 ## 📥 Download do aplicativo
+- O ***APK*** foi gerado apenas demonstrar a execução do código em ***C***.
+- ***O código em C*** → é o que realmente importa, é independente do APK.
 
 [![Download APK](https://img.shields.io/badge/Baixar-APK_Android-3ddc84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/brunomoraesdigital/c/releases/latest/download/dinorunc.apk)
 
