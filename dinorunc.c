@@ -9,6 +9,13 @@ int main () {
 	
 	printf("Dino C  Run\n");
 	printf("- - - - - - - - - - - - - - - - -\n");
+	printf("Nível Inicial: ", nivel);
+	scanf("%d", &nivel);
+	printf("Nivel Energia ", energia);
+	scanf("%f", &energia);
+	system("cls");
+	printf("Dino C  Run\n");
+	printf("- - - - - - - - - - - - - - - - -\n");
 	printf("Dino C\n");
 	printf("Nível %d\n", nivel);
 	printf("Energia %.1f\n", energia);
