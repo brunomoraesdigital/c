@@ -1,6 +1,7 @@
 # 🎮 Estudos em C para Desenvolvimento de Jogos
 
-Este repositório marca o início do meu aprendizado em C, linguagem que considero uma base fundamental para o desenvolvimento de software e, especialmente, para o universo dos jogos. Muitas das tecnologias modernas utilizadas em game development possuem raízes diretas no C, seja por meio de engines como a Unreal Engine (C++) ou de bibliotecas amplamente utilizadas como SDL e Raylib.
+Este repositório marca o início do meu aprendizado em C, linguagem que considero uma base fundamental para o desenvolvimento de software e, especialmente, para o universo dos jogos. Muitas das tecnologias modernas utilizadas em game development possuem raízes diretas no C, seja por meio de engines como a Unreal Engine (C++) ou de bibliotecas amplamente utilizadas como SDL e Raylib. 
+🗓️ Em 05/01/2026
 
 ## 🎯 Objetivo
 
@@ -18,7 +19,7 @@ O repositório contém exercícios, testes e pequenos projetos em C, além do AP
 
 [![Download APK](https://img.shields.io/badge/Baixar-APK_Android-3ddc84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/brunomoraesdigital/c/releases/latest/download/dinorunc.apk)
 
-![Downloads](https://img.shields.io/github/downloads/brunomoraesdigital/c/latest/total)
+![Downloads](https://img.shields.io/github/downloads/brunomoraesdigital/c/latest/total?label=Downloads)
 
 ## 👨🏻‍💻 Criado por Bruno Moraes
 
