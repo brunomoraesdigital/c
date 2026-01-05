@@ -1,6 +1,7 @@
+[![Demonstração](https://img.shields.io/badge/Clique_aqui-Para_ver_uma_Demonstração-ff6961?style=for-the-badge&logo=bluesky&logoColor=white)](https://brunomoraesdigital.github.io/javascript/)
 
-[![Portfólio](https://img.shields.io/badge/Portfólio-bmfolio.web.app-F77737?logo=google-chrome)](https://bmfolio.web.app/?utm_source=github&utm_medium=repo_meu-ping-pong) 
-[![GitHub](https://img.shields.io/badge/GitHub-brunomoraesdigital-181717?logo=github)](https://github.com/brunomoraesdigital) 
-![Última atualização](https://img.shields.io/github/last-commit/brunomoraesdigital/meu-ping-pong) 
+
+[![Portfólio](https://img.shields.io/badge/Portfólio-bmfolio.web.app-F77737?logo=rocket&logoColor=white)](https://bmfolio.web.app/?utm_source=github&utm_medium=repo_javascript) 
+[![GitHub](https://img.shields.io/badge/GitHub-brunomoraesdigital-333333?logo=github)](https://github.com/brunomoraesdigital) 
+![Última atualização](https://img.shields.io/github/last-commit/brunomoraesdigital/javascript) 
 ![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL_3.0-blue.svg) 
-![Visitas](https://visitor-badge.laobi.icu/badge?page_id=brunomoraesdigital.meu-ping-pong)
