@@ -1,6 +1,6 @@
 ## 📥 Download do aplicativo
 
-[![Download APK](https://img.shields.io/badge/Baixar-APK_Android-3ddc84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/brunomoraesdigital/c/releases/latest)
+[![Download APK](https://img.shields.io/badge/Baixar-APK_Android-3ddc84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/brunomoraesdigital/c/releases/latest/download/dinorunc.apk)
 
 ## 👨🏻‍💻 Criado por Bruno Moraes
 
