@@ -31,4 +31,4 @@ O repositório contém exercícios, testes e pequenos projetos em C, além do AP
 [![Portfólio](https://img.shields.io/badge/Portfólio-bmfolio.web.app-F77737?logo=rocket&logoColor=white)](https://bmfolio.web.app/?utm_source=github&utm_medium=repo_c)
 [![GitHub](https://img.shields.io/badge/GitHub-brunomoraesdigital-333333?logo=github&logoColor=white)](https://github.com/brunomoraesdigital)
 ![Último commit](https://img.shields.io/github/last-commit/brunomoraesdigital/c)
-![Licença](https://img.shields.io/github/license/brunomoraesdigital/c)
+![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL_3.0-blue.svg) 
