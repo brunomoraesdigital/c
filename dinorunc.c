@@ -21,6 +21,8 @@ int main () {
 	printf("Energia %.1f\n", energia);
 	printf("Pontuação %d\n", pontuacao);
 	
+	printf("Teste");
+	
 	
 	return 0;
 }
