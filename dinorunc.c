@@ -74,12 +74,14 @@ int main()
 				printf(" Você bateu no cacto! \n ");
 				printf(" -10 de energia \n ");
 				energia = energia - 10;
+				sleep(3);
 			}
 			else
 			{
 				printf(" Você bateu no abutre! \n ");
 				printf(" -20 de energia \n ");
 				energia = energia - 20;
+				sleep(3);
 			}
 
 		}
