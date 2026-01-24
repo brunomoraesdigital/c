@@ -62,74 +62,74 @@ int main()
 		{
 			if (evento == 0)
 			{
-				printf(" Você saltou com perfeicão! \n ");
-				printf(" + 10 pontos ! \n ");
+				printf(" \nVocê saltou com perfeicão! ganhou %d\n", corrida);
+				pontuacao = percorrido;
+				sleep(2);	
+			} else
+				{
+					printf("\nVocê abaixou com perfeição! %d\n", corrida);
+					pontuacao = percorrido;
+					sleep(2);
+				}
+			}
+			else if (escolha == 2)
+			{
+				if (evento == 0)
+				{
+					printf(" Você bateu no cacto! \n ");
+					printf(" -10 de energia \n ");
+					energia = energia - 10;
+				}
+				else
+				{
+					printf(" Você bateu no abutre! \n ");
+					printf(" -20 de energia \n ");
+					energia = energia - 20;
+				}
+
 			}
 			else
 			{
-				printf(" Você abaixou com perfeição! \n ");
-				printf(" +10 pontos! \n ");
+				if (evento == 0)
+				{
+					printf(" Comando inválido! \n ");
+					printf(" O Dino ficou confuso e atropelou o cacto! \n ");
+					printf(" -15 de energia \n ");
+					energia = energia - 15;
+				}
+				else
+				{
+					printf(" Comando inválido ! \n ");
+					printf(" O Dino ficou confuso e colidiu no abutre ! \n ");
+					printf(" - 25 de energia\n ");
+					energia = energia - 25;
+				}
+
 			}
-			pontuacao = pontuacao = percorrido;;
-		}
-		else if (escolha == 2)
-		{
-			if (evento == 0)
+
+
+			/* Verificação de GAME OVER */
+			if (energia <= 0)
 			{
-				printf(" Você bateu no cacto! \n ");
-				printf(" -10 de energia \n ");
-				energia = energia - 10;
+				printf(" \nEnergia esgotada!\n ");
+				printf("GAME OVER\n ");
+				return 0;
 			}
-			else
+
+			/* Verificação de VOCÊ GANHOU */
+			if (pontuacao >= 50)
 			{
-				printf(" Você bateu no abutre! \n ");
-				printf(" -20 de energia \n ");
-				energia = energia - 20;
+				printf(" \nAtingiu % d metros \n ", pontuacao);
+				printf(" VOCÊ GANHOU ! 🏆\n ");
+				return 0;
 			}
 
-		}
-		else
-		{
-			if (evento == 0)
-			{
-				printf(" Comando inválido! \n ");
-				printf(" O Dino ficou confuso e atropelou o cacto! \n ");
-				printf(" -15 de energia \n ");
-				energia = energia - 15;
-			}
-			else
-			{
-				printf(" Comando inválido ! \n ");
-				printf(" O Dino ficou confuso e colidiu no abutre ! \n ");
-				printf(" - 25 de energia\n ");
-				energia = energia - 25;
-			}
+			/* Status final */
+			printf(" \nStatus Atualizado: \n ");
+			printf("Energia: %.1f \n ", energia);
+			printf("Pontuação:%d \n ", pontuacao);
 
 		}
-
-
-		/* Verificação de GAME OVER */
-		if (energia <= 0)
-		{
-			printf(" \nEnergia esgotada!\n ");
-			printf("GAME OVER\n ");
-			return 0;
-		}
-
-		/* Verificação de VOCÊ GANHOU */
-		if (pontuacao >= 50)
-		{
-			printf(" \nAtingiu % d metros \n ", pontuacao);
-			printf(" VOCÊ GANHOU ! 🏆\n ");
-			return 0;
-		}
-
-		/* Status final */
-		printf(" \nStatus Atualizado: \n ");
-		printf("Energia: %.1f \n ", energia);
-		printf("Pontuação:%d \n ", pontuacao);
+		return 0;
 
 	}
-	return 0;
-
-}
