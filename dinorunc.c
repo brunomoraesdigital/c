@@ -107,7 +107,7 @@ int main()
 		if (energia <= 0)
 		{
 			printf(" \nEnergia esgotada!\n ");
-			printf("GAME OVER\n ");
+			printf("GAME OVER ☠️\n ");
 			return 0;
 		}
 
