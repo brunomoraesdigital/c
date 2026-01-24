@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 
 int main()
 {
@@ -12,6 +13,7 @@ int main()
 	int escolha;
 	int sorteio;
 	int jogoAtivo = 1;
+	int percorrido = 0;
 
 
 	printf("Dino C Run 🦖\n");
@@ -27,15 +29,31 @@ int main()
 		printf("❤️ Energia: %.1f || 🌟 Pontos: %d\n", energia, pontuacao);
 		printf("- - - - - - - - - - - - - - - - -\n");
 
+		int corrida = (rand() % 6) + 5;
+
+		printf("correndo ");
+
+		for (int i = 1; i <= corrida; i++)
+		{
+			percorrido++;
+			printf(" %dm ", percorrido);
+			fflush(stdout);		// força imprimir agora
+			usleep(400000);		// 0.4 segundos
+		}
+
+		printf(" ");
+
 		int evento = rand() % 2;
 
 		if (evento == 0)
 		{
-			printf("\n🌵 Um cacto apareceu! (1-Pular / 2-Atropelar): ");
+			printf("🌵 \n");
+			printf(" \n 🌵 Um cacto apareceu! (1 - Pular | 2 - Atropelar): ");
 		}
 		else
 		{
-			printf("\n🦅 Um Pterodáctilo apareceu! (1-Abaixar / 2-Colidir): ");
+			printf("🦅 \n");
+			printf(" \n 🦅 Um abutre apareceu! (1 - Abaixar | 2 - Colidir): ");
 		}
 
 		scanf("%d", &escolha);
@@ -44,28 +62,28 @@ int main()
 		{
 			if (evento == 0)
 			{
-				printf("Você saltou com perfeição! \n");
-				printf("+10 pontos! \n");
+				printf(" Você saltou com perfeicão! \n ");
+				printf(" + 10 pontos ! \n ");
 			}
 			else
 			{
-				printf("Você abaixou com perfeição! \n");
-				printf("+10 pontos! \n");
+				printf(" Você abaixou com perfeição! \n ");
+				printf(" +10 pontos! \n ");
 			}
-			pontuacao = pontuacao + 10;
+			pontuacao = pontuacao = percorrido;;
 		}
 		else if (escolha == 2)
 		{
 			if (evento == 0)
 			{
-				printf("Você bateu no cacto! \n");
-				printf("-10 de energia\n");
+				printf(" Você bateu no cacto! \n ");
+				printf(" -10 de energia \n ");
 				energia = energia - 10;
 			}
 			else
 			{
-				printf("Você bateu no Pterodáctilo! \n");
-				printf("-20 de energia\n");
+				printf(" Você bateu no abutre! \n ");
+				printf(" -20 de energia \n ");
 				energia = energia - 20;
 			}
 
@@ -74,16 +92,16 @@ int main()
 		{
 			if (evento == 0)
 			{
-				printf("Comando inválido! \n");
-				printf("O Dino ficou confuso e atropelou o cacto! \n");
-				printf("-15 de energia \n");
+				printf(" Comando inválido! \n ");
+				printf(" O Dino ficou confuso e atropelou o cacto! \n ");
+				printf(" -15 de energia \n ");
 				energia = energia - 15;
 			}
 			else
 			{
-				printf("Comando inválido! \n");
-				printf("O Dino ficou confuso e colidiu no cacto! \n");
-				printf("-25 de energia \n");
+				printf(" Comando inválido ! \n ");
+				printf(" O Dino ficou confuso e colidiu no abutre ! \n ");
+				printf(" - 25 de energia\n ");
 				energia = energia - 25;
 			}
 
@@ -93,23 +111,23 @@ int main()
 		/* Verificação de GAME OVER */
 		if (energia <= 0)
 		{
-			printf("\nEnergia esgotada!\n");
-			printf("GAME OVER ☠️\n");
+			printf(" \nEnergia esgotada!\n ");
+			printf("GAME OVER\n ");
 			return 0;
 		}
 
 		/* Verificação de VOCÊ GANHOU */
 		if (pontuacao >= 50)
 		{
-			printf("\nAtingiu %d metros\n", pontuacao);
-			printf("VOCÊ GANHOU! 🏆\n");
+			printf(" \nAtingiu % d metros \n ", pontuacao);
+			printf(" VOCÊ GANHOU ! 🏆\n ");
 			return 0;
 		}
 
 		/* Status final */
-		printf("\nStatus Atualizado:\n");
-		printf("Energia: %.1f\n", energia);
-		printf("Pontuação: %d\n", pontuacao);
+		printf(" \nStatus Atualizado: \n ");
+		printf("Energia: %.1f \n ", energia);
+		printf("Pontuação:%d \n ", pontuacao);
 
 	}
 	return 0;
