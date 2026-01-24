@@ -5,7 +5,7 @@
 
 int main()
 {
-	srand(time(NULL));			// ??
+	srand(time(NULL));			
 
 	int pontuacao = 0;
 	float energia = 100;
@@ -14,12 +14,6 @@ int main()
 	int sorteio;
 	int jogoAtivo = 1;
 	int percorrido = 0;
-
-
-	printf("Dino C Run 🦖\n");
-	printf("- - - - - - - - - - - - - - - - -\n");
-	printf("Energia: %.1f\n", energia);
-	printf("Pontuação: %d\n\n", pontuacao);
 
 	while (energia > 0 && pontuacao < 50)
 	{
