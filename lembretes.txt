@@ -1,0 +1,8 @@
+gcc dinorunc.c -o dinorunc.exe
+Compila o arquivo dinorunc.c e gera o executável dinorunc.exe.
+
+.\dinorunc
+Executa o programa dinorunc.exe que está na pasta atual.
+
+gcc dinorunc.c -o dinorunc.exe -Wall
+Compila o arquivo dinorunc.c, gera o executável dinorunc.exe e mostra avisos do compilador sobre possíveis problemas no código.
