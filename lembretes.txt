@@ -1,3 +1,5 @@
+cd ~/storage/shared/_aqui_meus_git
+
 gcc dinorunc.c -o dinorunc.exe
 Compila o arquivo dinorunc.c e gera o executável dinorunc.exe.
 
@@ -6,3 +8,28 @@ Executa o programa dinorunc.exe que está na pasta atual.
 
 gcc dinorunc.c -o dinorunc.exe -Wall
 Compila o arquivo dinorunc.c, gera o executável dinorunc.exe e mostra avisos do compilador sobre possíveis problemas no código.
+
+nano <nome do arquivo> 
+abre modo texto
+
+rm <nome do arquivo>
+deletar o arquivo inteiro
+rm *.exe
+deleta todos os .exe
+
+echo "*.apk" > <nome do arquivo>
+Isso cria o arquivo e já escreve pra ignorar o apk
+
+echo "*.apk" >> <nome do arquivo>
+
+O >e o >> são importantes
+> sobrescreve
+>> adiciona no final
+
+sed -i '$d' .gitignore
+Se você sabe que é só a última linha:
+$ = última linha
+d = delete
+
+cat <nome do arquivo>
+vê o conteúdo
