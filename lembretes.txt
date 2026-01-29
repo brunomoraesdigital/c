@@ -62,3 +62,18 @@ d = delete
 💻 cat <nome_do_arquivo>
 Mostra todo o conteúdo do arquivo no terminal.
 ----------------------
+O CAMINHO IDEAL (sequência perfeita)
+
+1️⃣ Makefile agora
+2️⃣ projetos pequenos funcionando
+3️⃣ entender flags, libs, objetos
+4️⃣ CMake depois, quando:
+
+tiver múltiplos arquivos
+
+usar SDL2 / Raylib
+
+quiser build multiplataforma
+
+📌 Quando você migrar pra CMake, ele vai fazer sentido.
+Não vai parecer magia.
