@@ -1,35 +1,64 @@
-cd ~/storage/shared/_aqui_meus_git
+----------------------
+📁 NAVEGAÇÃO
+----------------------
+💻 cd ~/storage/shared/_aqui_meus_git
+Entra na pasta _aqui_meus_git dentro do armazenamento compartilhado.
 
-gcc dinorunc.c -o dinorunc.exe
+----------------------
+⚙️ COMPILAÇÃO EM C (gcc)
+----------------------
+💻 gcc dinorunc.c -o dinorunc.exe
 Compila o arquivo dinorunc.c e gera o executável dinorunc.exe.
 
-.\dinorunc
+💻 gcc dinorunc.c -o dinorunc.exe -Wall
+Compila o programa e mostra avisos do compilador sobre possíveis problemas.
+
+----------------------
+▶️ EXECUÇÃO DO PROGRAMA
+----------------------
+💻 ./dinorunc
 Executa o programa dinorunc.exe que está na pasta atual.
+No Linux/Termux o .exe é apenas parte do nome.
 
-gcc dinorunc.c -o dinorunc.exe -Wall
-Compila o arquivo dinorunc.c, gera o executável dinorunc.exe e mostra avisos do compilador sobre possíveis problemas no código.
+----------------------
+📝 EDIÇÃO DE ARQUIVOS (modo texto)
+----------------------
+💻 nano <nome_do_arquivo>
+Abre o arquivo em modo texto para edição.
 
-nano <nome do arquivo> 
-abre modo texto
+----------------------
+🗑️ REMOÇÃO DE ARQUIVOS
+----------------------
+💻 rm <nome_do_arquivo>
+Remove um arquivo específico.
 
-rm <nome do arquivo>
-deletar o arquivo inteiro
-rm *.exe
-deleta todos os .exe
+💻 rm *.exe
+Remove todos os arquivos .exe da pasta.
 
-echo "*.apk" > <nome do arquivo>
-Isso cria o arquivo e já escreve pra ignorar o apk
+----------------------
+🚫 .gitignore (ignorar arquivos)
+----------------------
+💻 echo "*.apk" > .gitignore
+Cria o arquivo .gitignore do zero e escreve a regra para ignorar arquivos .apk.
 
-echo "*.apk" >> <nome do arquivo>
+💻 echo "*.apk" >> .gitignore
+Adiciona a regra no final do arquivo .gitignore.
 
-O >e o >> são importantes
-> sobrescreve
->> adiciona no final
+> sobrescreve o arquivo
+>> adiciona conteúdo no final
 
-sed -i '$d' .gitignore
-Se você sabe que é só a última linha:
+----------------------
+✂️ REMOVER A ÚLTIMA LINHA DE UM ARQUIVO
+----------------------
+💻 sed -i '$d' .gitignore
+Remove apenas a última linha do arquivo.
+
 $ = última linha
 d = delete
 
-cat <nome do arquivo>
-vê o conteúdo
+----------------------
+👀 VISUALIZAR CONTEÚDO DE ARQUIVOS
+----------------------
+💻 cat <nome_do_arquivo>
+Mostra todo o conteúdo do arquivo no terminal.
+----------------------
