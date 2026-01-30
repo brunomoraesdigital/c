@@ -183,14 +183,14 @@ float aplicarDano(int escolha, int evento, float energia)
 	{
 		if (evento == 0)
 		{
-			printf(" Você bateu no cacto! \n ");
-			printf(" -10 de energia \n\n ");
+			printf("\nVocê bateu no cacto! \n ");
+			printf("-10 de energia \n\n ");
 			energia = atualizarEnergia(energia, 10);
 		}
 		else
 		{
-			printf(" Você bateu no abutre! \n ");
-			printf(" -20 de energia \n\n ");
+			printf("\nVocê bateu no abutre! \n ");
+			printf("-20 de energia \n\n ");
 			energia = atualizarEnergia(energia, 20);
 		}
 	}
@@ -198,15 +198,15 @@ float aplicarDano(int escolha, int evento, float energia)
 	{
 		if (evento == 0)
 		{
-			printf(" Comando inválido! \n ");
-			printf(" O Dino ficou confuso e atropelou o cacto! \n ");
+			printf("\nComando inválido! \n ");
+			printf("O Dino ficou confuso e atropelou o cacto! \n ");
 			printf(" -15 de energia \n\n ");
 			energia = atualizarEnergia(energia, 15);
 		}
 		else
 		{
-			printf(" Comando inválido ! \n ");
-			printf(" O Dino ficou confuso e colidiu no abutre ! \n ");
+			printf("\nComando inválido ! \n ");
+			printf("O Dino ficou confuso e colidiu no abutre ! \n ");
 			printf(" - 25 de energia \n\n ");
 			energia = atualizarEnergia(energia, 25);
 		}
