@@ -20,7 +20,7 @@ int aparicoes(int evento);
 
 int verificarEscolhaJogador();
 
-void aplicarEsquiva(int evento);
+void aplicarEsquiva(int evento, int corrida);
 
 float atualizarEnergia(float energia, int dano);
 float aplicarDano(int escolha, int evento, float energia);
@@ -58,7 +58,7 @@ int main()
 
 		if (escolha == 1)
 		{
-			aplicarEsquiva(evento);
+			aplicarEsquiva(evento, corrida);
 			pontuacao = atualizarPontuacao(pontuacao, corrida);
 		}
 		else
@@ -162,15 +162,17 @@ int verificarEscolhaJogador()
 	return escolha = 0;
 }
 
-void aplicarEsquiva(int evento)
+void aplicarEsquiva(int evento, int corrida)
 {
 	if (evento == 0)
 	{
 		printf("\nVocê pulou com perfeição!!\n");
+		printf("Voce ganhou %d pontos!!!\n\n", corrida);
 	}
 	else
 	{
 		printf("\nVocê abaixou com perfeição!!\n");
+		printf("Voce ganhou %d pontos!!!\n\n", corrida);
 	}
 	dormir(3);
 }
@@ -182,13 +184,13 @@ float aplicarDano(int escolha, int evento, float energia)
 		if (evento == 0)
 		{
 			printf(" Você bateu no cacto! \n ");
-			printf(" -10 de energia \n ");
+			printf(" -10 de energia \n\n ");
 			energia = atualizarEnergia(energia, 10);
 		}
 		else
 		{
 			printf(" Você bateu no abutre! \n ");
-			printf(" -20 de energia \n ");
+			printf(" -20 de energia \n\n ");
 			energia = atualizarEnergia(energia, 20);
 		}
 	}
@@ -198,14 +200,14 @@ float aplicarDano(int escolha, int evento, float energia)
 		{
 			printf(" Comando inválido! \n ");
 			printf(" O Dino ficou confuso e atropelou o cacto! \n ");
-			printf(" -15 de energia \n ");
+			printf(" -15 de energia \n\n ");
 			energia = atualizarEnergia(energia, 15);
 		}
 		else
 		{
 			printf(" Comando inválido ! \n ");
 			printf(" O Dino ficou confuso e colidiu no abutre ! \n ");
-			printf(" - 25 de energia\n ");
+			printf(" - 25 de energia \n\n ");
 			energia = atualizarEnergia(energia, 25);
 		}
 	}
@@ -220,7 +222,7 @@ void conclusao(float energia, int pontuacao)
 		limparTela();
 		cabecalho(energia, pontuacao);
 		printf(" \nEnergia esgotada!\n ");
-		printf("GAME OVER ☠️\n ");
+		printf("GAME OVER ☠️\n\n ");
 	}
 
 	if (pontuacao >= 50)
@@ -228,6 +230,6 @@ void conclusao(float energia, int pontuacao)
 		limparTela();
 		cabecalho(energia, pontuacao);
 		printf("\nAtingiu %d metros\n", pontuacao);
-		printf(" VOCÊ GANHOU ! 🏆\n ");
+		printf(" VOCÊ GANHOU ! 🏆\n\n ");
 	}
 }
