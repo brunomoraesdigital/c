@@ -83,8 +83,10 @@ int main()
 		cabecalho(energia, pontuacao);
 
 		corrida = mostrarCorrida();
+		
+		sorteado_aparicoes = sortear_aparicao();
 
-		evento = aparicoes();
+		evento = aparicoes(sorteado_aparicoes);
 
 		escolha = verificarEscolhaJogador();
 
@@ -167,20 +169,17 @@ int sortear_aparicao()
 	return (rand() % 100) + 1;
 }
 
-
-
 /* - - - - - - - - - - - - - */
 /* - - - - - - - - - - - - - */
 // funções ...
-int aparicoes()
+int aparicoes(int sorteado_aparicoes)
 {
-	int sorteado_aparicoes = sortear_aparicao();
 
 	int chances_aparicoes[12] = {
 		12, 23, 34, 44, 53, 62,
 		70, 78, 85, 91, 96, 100
 	};
-
+	
 	int i;
 
 	for (i = 0; i < 12; i++)
@@ -265,11 +264,26 @@ float aplicarDano(int escolha, int evento, float energia)
 		4, 6, 10, 14, 16, 20,
 		22, 24, 28, 30, 35, 50
 	};
+	
+char nomes_aparicoes[12][24] = {
+    "tropecou np ",            // 🪵 Tronco
+    "se espinhou no ",          // 🌵 Cacto
+    "foi mordido pela ",         // 🕷️ Aranha
+    "foi atacado pela ",        // 🦅 Aguia
+    "se assustou com o ",        // 👻 Fantasma
+    "caiu no ",                // 🕳️ Buraco
+    "foi arrastado pelo ",     // 🌊 Rio
+    "levou o bote da ",        // 🐍 Cobra
+    "foi picado por ",         // 🦂 Escorpiao
+    "bateu contra o ",           // 🪨 pedregulho
+    "foi queimado pelo ",      // 🔥 Incendio
+    "foi atingido por um "        // ☄️ Cometa
+};
 
 
 	if (escolha == 2)
 	{
-		printf("\nVocê bateu no %s %s!!!\n", emojis_aparicoes[evento], nomes_aparicoes[evento]);
+		printf("\nFoi atingido  %s %s!!!\n", emojis_aparicoes[evento], nomes_aparicoes[evento]);
 
 		printf("-%d de energia\n\n", danos_aparicoes[evento]);
 
