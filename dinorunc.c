@@ -46,7 +46,7 @@ char emojis_aparicoes[12][24] = {
 };
 
 char nomes_aparicoes[12][24] = {
-    "Madeira",
+    "Tronco",
     "Cacto",
     "Aranha",
     "Aguia",
@@ -148,11 +148,11 @@ int mostrarCorrida()
 {
 	int corrida = (rand() % 6) + 5;
 
-	printf("correndo ");
+	printf("correndo: ");
 
 	for (int i = 1; i <= corrida; i++)
 	{
-		printf(" %dm ", i);
+		printf("%dm ", i);
 		fflush(stdout);
 		dormir(0.4);			// segundos
 	}
@@ -186,9 +186,9 @@ int aparicoes(int sorteado_aparicoes)
 	{
 		if (sorteado_aparicoes <= chances_aparicoes[i])
 		{
-			printf("%s", emojis_aparicoes[i]);
-			printf("\nNumero Sorteado: %d", sorteado_aparicoes);
-			printf("\nChance limite: %d", chances_aparicoes[i]);
+			printf("%s\n", emojis_aparicoes[i]);
+			//printf("\nNumero Sorteado: %d", sorteado_aparicoes);
+			//printf("\nChance limite: %d", chances_aparicoes[i]);
 			printf("\n%s %s apareceu! (1 - Pular | 2 - Atropelar): ",
 				   emojis_aparicoes[i], nomes_aparicoes[i]);
 
@@ -244,13 +244,13 @@ void aplicarEsquiva(int evento, int corrida)
 {
 	if (evento == 0)
 	{
-		printf("\nVocê pulou com perfeição!!\n");
-		printf("Voce ganhou %d pontos!!!\n\n", corrida);
+		printf("\nO Dino pulou com perfeição!!\n");
+		printf("O Dino ganhou %d pontos!!!\n\n", corrida);
 	}
 	else
 	{
-		printf("\nVocê abaixou com perfeição!!\n");
-		printf("Voce ganhou %d pontos!!!\n\n", corrida);
+		printf("\nO Dino abaixou com perfeição!!\n");
+		printf("O Dino ganhou %d pontos!!!\n\n", corrida);
 	}
 	dormir(3);
 }
@@ -265,39 +265,54 @@ float aplicarDano(int escolha, int evento, float energia)
 		22, 24, 28, 30, 35, 50
 	};
 	
-char nomes_aparicoes[12][24] = {
-    "tropecou np ",            // 🪵 Tronco
-    "se espinhou no ",          // 🌵 Cacto
-    "foi mordido pela ",         // 🕷️ Aranha
-    "foi atacado pela ",        // 🦅 Aguia
-    "se assustou com o ",        // 👻 Fantasma
-    "caiu no ",                // 🕳️ Buraco
-    "foi arrastado pelo ",     // 🌊 Rio
-    "levou o bote da ",        // 🐍 Cobra
-    "foi picado por ",         // 🦂 Escorpiao
-    "bateu contra o ",           // 🪨 pedregulho
-    "foi queimado pelo ",      // 🔥 Incendio
-    "foi atingido por um "        // ☄️ Cometa
+char consequencias_aparicoes[12][24] = {
+    "tropecou no ",            // 🪵 tronco
+    "se espinhou no ",         // 🌵 cacto
+    "foi mordido pela ",       // 🕷️ aranha
+    "foi atacado pela ",       // 🦅 aguia
+    "se assustou com o ",      // 👻 fantasma
+    "caiu no ",                // 🕳️ buraco
+    "foi arrastado pelo ",     // 🌊 rio
+    "levou o bote da ",        // 🐍 cobra
+    "foi picado pelo",         // 🦂 escorpiao
+    "bateu contra o ",         // 🪨 pedregulho
+    "foi queimado pelo ",      // 🔥 incendio
+    "foi atingido por um "     // ☄️ cometa
 };
 
+char falhou[12][48] = {
+    "O Dino C se distraiu e",
+    "O Dino C piscou e",
+    "O Dino C cochilou e",
+    "O Dino C se esqueceu e",
+    "O Dino C se confundiu e",
+    "O Dino C sonhou e",
+    "O Dino C desviou a atencao e",
+    "O Dino C espirrou e",
+    "O Dino C se atrapalhou e",
+    "O Dino C lembrou algo engracado e",
+    "O Dino C admirou a paisagem e",
+    "O Dino C hesitou e"
+};
 
 	if (escolha == 2)
 	{
-		printf("\nFoi atingido  %s %s!!!\n", emojis_aparicoes[evento], nomes_aparicoes[evento]);
+		printf("\n%s %s %s!!!\n", consequencias_aparicoes[evento],  emojis_aparicoes[evento], nomes_aparicoes[evento]);
 
-		printf("-%d de energia\n\n", danos_aparicoes[evento]);
+		printf("Perdeu %d de energia\n\n", danos_aparicoes[evento]);
 
 		energia = atualizarEnergia(energia, danos_aparicoes[evento]);
 	}
 	if (escolha == 0)
 	{
-		printf("\nVocê bateu no %s %s!!!\n", emojis_aparicoes[evento], nomes_aparicoes[evento]);
+		int j = rand() % 12;
+		printf("\n%s %s %s %s!!!\n", falhou[j],  consequencias_aparicoes[evento],  emojis_aparicoes[evento], nomes_aparicoes[evento]);
 
-		printf("-%d de energia\n\n", danos_aparicoes[evento] + 5);
+		printf("Perdeu %d de energia\n\n", danos_aparicoes[evento] + 5);
 
 		energia = atualizarEnergia(energia, danos_aparicoes[evento] + 5);
 	}
-	dormir(10);					// segundos
+	dormir(4);					// segundos
 	return energia;
 }
 
