@@ -10,6 +10,56 @@
 #include <unistd.h>
 #endif
 
+// Funções Utilitárias
+void limparTela();
+void dormir(double seg);
+
+void cabecalho(float energia, int pontuacao);
+int mostrarCorrida();
+int sortear_aparicao();
+int aparicoes();
+
+int verificarEscolhaJogador();
+
+void aplicarEsquiva(int evento, int corrida);
+
+float atualizarEnergia(float energia, int dano);
+float aplicarDano(int escolha, int evento, float energia);
+
+int atualizarPontuacao(int pontuacao, int corrida);
+
+void conclusao(float energia, int pontuacao);
+
+char emojis_aparicoes[12][24] = {
+    "🪵",
+    "🌵",
+    "🕷️",
+    "🦅",
+    "👻",
+    "🕳️",
+    "🌊",
+    "🐍",
+    "🦂",
+    "🪨",
+    "🔥",
+    "☄️"
+};
+
+char nomes_aparicoes[12][24] = {
+    "Madeira",
+    "Cacto",
+    "Aranha",
+    "Aguia",
+    "Fantasma",
+    "Buraco",
+    "Rio",
+    "Cobra",
+    "Escorpiao",
+    "Pedra",
+    "Incendio",
+    "Cometa"
+};
+
 int main()
 {
 
@@ -21,158 +71,242 @@ int main()
 
 	int pontuacao = 0;
 	float energia = 100;
-	int nivel = 1;
 	int escolha;
-	int sorteio;
-	int jogoAtivo = 1;
-	int percorrido = 0;
-
+	int corrida = 0;
+	int evento = 0;
+	int sorteado_aparicoes;
 
 	while (energia > 0 && pontuacao < 50)
 	{
-#ifdef _WIN32
-		// No windows seria system("cls")
-		system("cls");
-#else
-		// No Linux seria system("clear")
-		system("clear");
-#endif
-		printf("Dino C Run 🦖\n");
-		printf("- - - - - - - - - - - - - - - - -\n");
-		printf("❤️ Energia: %.1f || 🌟 Pontos: %d\n", energia, pontuacao);
-		printf("- - - - - - - - - - - - - - - - -\n");
+		limparTela();
 
-		int corrida = (rand() % 6) + 5;
+		cabecalho(energia, pontuacao);
 
-		printf("correndo ");
+		corrida = mostrarCorrida();
 
-		for (int i = 1; i <= corrida; i++)
-		{
-			percorrido++;
-			printf(" %dm ", percorrido);
-			fflush(stdout);
+		evento = aparicoes();
 
-#ifdef _WIN32
-			// Windows: milissegundos (400 = 0.4s)
-			Sleep(400);
-#else
-			// Linux: microssegundos (400.000 = 0.4s)
-			usleep(400000);
-#endif
-		}
-
-		printf(" ");
-
-		int evento = rand() % 2;
-
-		if (evento == 0)
-		{
-			printf("🌵 \n");
-			printf(" \n 🌵 Um cacto apareceu! (1 - Pular | 2 - Atropelar): ");
-		}
-		else
-		{
-			printf("🦅 \n");
-			printf(" \n 🦅 Um abutre apareceu! (1 - Abaixar | 2 - Colidir): ");
-		}
-
-		scanf("%d", &escolha);
+		escolha = verificarEscolhaJogador();
 
 		if (escolha == 1)
 		{
-			if (evento == 0)
-			{
-				printf(" \nVocê saltou com perfeicão! ganhou %d\n", corrida);
-				pontuacao = percorrido;
-
-#ifdef _WIN32
-				// Windows: milissegundos (3000 = 3s)
-				Sleep(3000);
-#else
-				// Linux: segundos
-				sleep(3);
-#endif
-			}
-			else
-			{
-				printf("\nVocê abaixou com perfeição! %d\n", corrida);
-				pontuacao = percorrido;
-
-#ifdef _WIN32
-				// Windows: milissegundos (3000 = 3s)
-				Sleep(3000);
-#else
-				// Linux: segundos
-				sleep(3);
-#endif
-			}
-		}
-		else if (escolha == 2)
-		{
-			if (evento == 0)
-			{
-				printf(" Você bateu no cacto! \n ");
-				printf(" -10 de energia \n ");
-				energia = energia - 10;
-
-#ifdef _WIN32
-					// Windows: milissegundos (3000 = 3s)
-					Sleep(3000);
-#else
-					// Linux: segundos
-					sleep(3);
-#endif
-			}
-			else
-			{
-				printf(" Você bateu no abutre! \n ");
-				printf(" -20 de energia \n ");
-				energia = energia - 20;
-
-#ifdef _WIN32
-					// Windows: milissegundos (3000 = 3s)
-					Sleep(3000);
-#else
-					// Linux: segundos
-					sleep(3);
-#endif
-			}
+			aplicarEsquiva(evento, corrida);
+			pontuacao = atualizarPontuacao(pontuacao, corrida);
 		}
 		else
 		{
-			if (evento == 0)
-			{
-				printf(" Comando inválido! \n ");
-				printf(" O Dino ficou confuso e atropelou o cacto! \n ");
-				printf(" -15 de energia \n ");
-				energia = energia - 15;
-			}
-			else
-			{
-				printf(" Comando inválido ! \n ");
-				printf(" O Dino ficou confuso e colidiu no abutre ! \n ");
-				printf(" - 25 de energia\n ");
-				energia = energia - 25;
-			}
+			energia = aplicarDano(escolha, evento, energia);
 		}
 
-		if (energia <= 0)
-		{
-			printf(" \nEnergia esgotada!\n ");
-			printf("GAME OVER ☠️\n ");
-			return 0;
-		}
-
-		if (pontuacao >= 50)
-		{
-			printf(" \nAtingiu % d metros \n ", pontuacao);
-			printf(" VOCÊ GANHOU ! 🏆\n ");
-			return 0;
-		}
-
-		printf(" \nStatus Atualizado: \n ");
-		printf("Energia: %.1f \n ", energia);
-		printf("Pontuação:%d \n ", pontuacao);
+		conclusao(energia, pontuacao);
 	}
 	return 0;
+}
+
+/* - - - - - - - - - - - - - */
+/* - - - - - - - - - - - - - */
+/* - - - - - - - - - - - - - */
+// Funções Utilitárias
+void limparTela()
+{
+#ifdef _WIN32
+	system("cls");
+#else
+	system("clear");
+#endif
+}
+
+/* - - - - - - - - - - - - - */
+/* - - - - - - - - - - - - - */
+// Funções Utilitárias
+void dormir(double seg)
+{
+#ifdef _WIN32
+	Sleep((int)(seg * 1000 + 0.5));	// segundos
+#else
+	usleep((int)(seg * 1000000 + 0.5));	// segundos
+#endif
+}
+
+/* - - - - - - - - - - - - - */
+/* - - - - - - - - - - - - - */
+// Funcões ...
+void cabecalho(float energia, int pontuacao)
+{
+	printf("Dino C Run 🦖\n");
+	printf("- - - - - - - - - - - - - - - - -\n");
+	printf("❤️ Energia: %.1f || 🌟 Pontos: %d\n", energia, pontuacao);
+	printf("- - - - - - - - - - - - - - - - -\n");
+}
+
+/* - - - - - - - - - - - - - */
+/* - - - - - - - - - - - - - */
+// Funcões ...
+int mostrarCorrida()
+{
+	int corrida = (rand() % 6) + 5;
+
+	printf("correndo ");
+
+	for (int i = 1; i <= corrida; i++)
+	{
+		printf(" %dm ", i);
+		fflush(stdout);
+		dormir(0.4);			// segundos
+	}
+
+	printf(" ");
+	return corrida;
+}
+
+/* - - - - - - - - - - - - - */
+/* - - - - - - - - - - - - - */
+// funções ...
+int sortear_aparicao()
+{
+	return (rand() % 100) + 1;
+}
+
+
+
+/* - - - - - - - - - - - - - */
+/* - - - - - - - - - - - - - */
+// funções ...
+int aparicoes()
+{
+	int sorteado_aparicoes = sortear_aparicao();
+
+	int chances_aparicoes[12] = {
+		12, 23, 34, 44, 53, 62,
+		70, 78, 85, 91, 96, 100
+	};
+
+	int i;
+
+	for (i = 0; i < 12; i++)
+	{
+		if (sorteado_aparicoes <= chances_aparicoes[i])
+		{
+			printf("%s", emojis_aparicoes[i]);
+			printf("\nNumero Sorteado: %d", sorteado_aparicoes);
+			printf("\nChance limite: %d", chances_aparicoes[i]);
+			printf("\n%s %s apareceu! (1 - Pular | 2 - Atropelar): ",
+				   emojis_aparicoes[i], nomes_aparicoes[i]);
+
+			return i;			// índice do evento
+		}
+	}
+
+	return -1;
+}
+
+	/* - - - - - - - - - - - - - */
+	/* - - - - - - - - - - - - - */
+	// Funcões ...
+float atualizarEnergia(float energia, int dano)
+{
+	energia = energia - dano;
+	if (energia < 0)
+	{
+		energia = 0;
+	}
+	return energia;
+}
+
+	/* - - - - - - - - - - - - - */
+	/* - - - - - - - - - - - - - */
+	// Funcões ...
+int atualizarPontuacao(int pontuacao, int corrida)
+{
+	return pontuacao + corrida;
+}
+
+	/* - - - - - - - - - - - - - */
+	/* - - - - - - - - - - - - - */
+	// Funcões ...
+int verificarEscolhaJogador()
+{
+	int escolha;
+
+	scanf("%d", &escolha);
+
+	if (escolha == 1 || escolha == 2)
+	{
+		return escolha;			// escolhas certas 1 ou 2
+	}
+
+	return escolha = 0;
+}
+
+	/* - - - - - - - - - - - - - */
+	/* - - - - - - - - - - - - - */
+	// Funcões ...
+void aplicarEsquiva(int evento, int corrida)
+{
+	if (evento == 0)
+	{
+		printf("\nVocê pulou com perfeição!!\n");
+		printf("Voce ganhou %d pontos!!!\n\n", corrida);
+	}
+	else
+	{
+		printf("\nVocê abaixou com perfeição!!\n");
+		printf("Voce ganhou %d pontos!!!\n\n", corrida);
+	}
+	dormir(3);
+}
+
+	/* - - - - - - - - - - - - - */
+	/* - - - - - - - - - - - - - */
+	// Funcões ...
+float aplicarDano(int escolha, int evento, float energia)
+{
+	int danos_aparicoes[12] = {
+		4, 6, 10, 14, 16, 20,
+		22, 24, 28, 30, 35, 50
+	};
+
+
+	if (escolha == 2)
+	{
+		printf("\nVocê bateu no %s %s!!!\n", emojis_aparicoes[evento], nomes_aparicoes[evento]);
+
+		printf("-%d de energia\n\n", danos_aparicoes[evento]);
+
+		energia = atualizarEnergia(energia, danos_aparicoes[evento]);
+	}
+	if (escolha == 0)
+	{
+		printf("\nVocê bateu no %s %s!!!\n", emojis_aparicoes[evento], nomes_aparicoes[evento]);
+
+		printf("-%d de energia\n\n", danos_aparicoes[evento] + 5);
+
+		energia = atualizarEnergia(energia, danos_aparicoes[evento] + 5);
+	}
+	dormir(10);					// segundos
+	return energia;
+}
+
+	/* - - - - - - - - - - - - - */
+	/* - - - - - - - - - - - - - */
+	// Funcões ...
+void conclusao(float energia, int pontuacao)
+{
+	if (energia <= 0)
+	{
+		limparTela();
+		cabecalho(energia, pontuacao);
+		printf(" \nEnergia esgotada!\n ");
+		printf("GAME OVER ☠️\n\n ");
+	}
+	/* - - - - - - - - - - - - - */
+	/* - - - - - - - - - - - - - */
+	// Funcões ...
+	if (pontuacao >= 50)
+	{
+		limparTela();
+		cabecalho(energia, pontuacao);
+		printf("\nAtingiu %d metros\n", pontuacao);
+		printf(" VOCÊ GANHOU ! 🏆\n\n ");
+	}
 }
