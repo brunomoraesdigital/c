@@ -1,235 +1,120 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 
 #ifdef _WIN32
-// Para Windows (Sleep)
 #include <windows.h>
-#else
-// Para Linux/Android (usleep e sleep)
-#include <unistd.h>
 #endif
-
-// Funções Utilitárias
-void limparTela();
-void dormir(double seg);
-
-void cabecalho(float energia, int pontuacao);
-int mostrarCorrida();
-int aparicoes(int evento);
-
-int verificarEscolhaJogador();
-
-void aplicarEsquiva(int evento, int corrida);
-
-float atualizarEnergia(float energia, int dano);
-float aplicarDano(int escolha, int evento, float energia);
-
-int atualizarPontuacao(int pontuacao, int corrida);
-
-void conclusao(float energia, int pontuacao);
 
 int main()
 {
-
 #ifdef _WIN32
-	SetConsoleOutputCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
 #endif
 
-	srand(time(NULL));
+    printf("CRÔNICAS DE C-LAND 🏰✨\n\n");
 
-	int pontuacao = 0;
-	float energia = 100;
-	int escolha;
-	int corrida = 0;
-	int evento = 0;
+    printf("Recepcionista:\n");
+    printf("--------------------------------\n");
+    printf("Boas-vindas!! 🤝\n");
+    printf("Para iniciar seu registro\n");
+    printf("na guilda dos aventureiros,\n");
+    printf("preencha este formulário. 📝\n");
+    printf("--------------------------------\n\n");
 
-	while (energia > 0 && pontuacao < 50)
-	{
-		limparTela();
+    float peso = 0;
+    float altura = 0;
+    int idade = 0;
+    char nome[25];
+    char classe[25] = {"Mago"};
+    char rank = 'F';
 
-		cabecalho(energia, pontuacao);
+    int forca = 1;
+    int destreza = 1;
+    int inteligencia = 1;
+    int sorte = 1;
+    int agilidade = 1;
+    int vitalidade = 1;
+    
+    int pontosDeAtributos = 10;
+    
+    float ataqueMagico = (inteligencia*3)+(destreza/2)+(sorte);
+    float ataqueFisico = (forca*2)+(destreza/2)+(sorte);
+    float ataqueDistancia = (destreza*3)+(inteligencia/2)+(sorte);
+    
+    printf("???::\n");
+    printf("--------------------------------\n");
+    printf("Hmm, vejamos... 👀\n");
+    printf("O meu nome? ");
+    scanf("%24s", nome);
+    printf("A minha classe? %s\n", classe);
+    printf("A minha idade? ");
+    scanf("%d", &idade);
+    printf("A minha altura? ");
+    scanf("%f", &altura);
+    printf("O meu peso? ");
+    scanf("%f", &peso);
+    printf("Terminei, aqui está o formulário. 📄\n");
+    printf("--------------------------------\n\n");
 
-		corrida = mostrarCorrida();
+    printf("Recepcionista:\n");
+    printf("--------------------------------\n");
+    printf("Vamos ver... 👀\n");
+    printf("Está tudo certo.\n");
+    printf("Aqui está o seu registro. 🪪\n");
+    printf("--------------------------------\n\n");
 
-		evento = aparicoes(evento);
+    printf("Registro:\n");
+    printf("--------------------------------\n");
+    printf("Aventureiro %s 🙎🏻\n", nome);
+    printf("classe: %s\n", classe);
+    printf("Rank %c\n", rank);
+    printf("Idade %d anos\n", idade);
+    printf("Altura %.2f cm\n", altura);
+    printf("Peso %.2f kg\n", peso);
+    printf("\nAtributos:\n");
+    printf("Vit: %d\tAgi: %d\n", vitalidade, agilidade);
+    printf("For: %d\tInt: %d\n", forca, inteligencia);
+    printf("Des: %d\tSor: %d\n", destreza, sorte);
+    
+    printf("Ataque Físico: %.2f \n", ataqueFisico);
+    printf("Ataque Mágico: %.2f\n", ataqueMagico);
+    printf("Pontos de Atributos: %d", pontosDeAtributos);
+    printf("--------------------------------\n\n");
 
-		escolha = verificarEscolhaJogador();
+    printf("Recepcionista:\n");
+    printf("--------------------------------\n");
+    printf("Você pode entrar agora. 🚪✨\n");
+    printf("--------------------------------\n\n");
 
-		if (escolha == 1)
-		{
-			aplicarEsquiva(evento, corrida);
-			pontuacao = atualizarPontuacao(pontuacao, corrida);
-		}
-		else
-		{
-			energia = aplicarDano(escolha, evento, energia);
-		}
+    printf("Eldrin:\n");
+    printf("--------------------------------\n");
+    printf("Já era hora... então você finalmente apareceu. 😤\n");
+    printf("Está pronto para o que nos espera? ⚔️\n");
+    printf("Errr... qual é mesmo o seu nome? 🤔\n");
+    printf("--------------------------------\n\n");
 
-		conclusao(energia, pontuacao);
-	}
-	return 0;
-}
+    printf("%s:\n", nome);
+    printf("--------------------------------\n");
+    printf("Meu nome é %s, senhor.\n", nome);
+    printf("Sim, estou preparado. 💪🔥\n");
+    printf("--------------------------------\n\n");
 
-// Funções Utilitárias
-void limparTela()
-{
-#ifdef _WIN32
-	system("cls");
-#else
-	system("clear");
-#endif
-}
-// Funções Utilitárias
-void dormir(double seg)
-{
-#ifdef _WIN32
-	Sleep((int)(seg * 1000 + 0.5)); // segundos
-#else
-	usleep((int)(seg * 1000000 + 0.5)); // segundos
-#endif
-}
+    printf("Eldrin:\n");
+    printf("--------------------------------\n");
+    printf("Ah... certo, agora me recordei. 😌\n");
+    printf("Perfeito, %s.\n", nome);
+    printf("Agora o grupo está completo. 🛡️⚔️\n");
+    printf("--------------------------------\n\n");
 
-void cabecalho(float energia, int pontuacao)
-{
-	printf("Dino C Run 🦖\n");
-	printf("- - - - - - - - - - - - - - - - -\n");
-	printf("❤️ Energia: %.1f || 🌟 Pontos: %d\n", energia, pontuacao);
-	printf("- - - - - - - - - - - - - - - - -\n");
-}
+printf("Eldrin:\n");
+    printf("--------------------------------\n");
+    printf("Antes de irmos, %s,\n", nome);
+    printf("Você deve distribuir seus pontos de atributos. 🎯\n");
+    
+    
+    scanf("%d", &inteligencia);
+    scanf("%d", &destreza);
 
-int mostrarCorrida()
-{
-	int corrida = (rand() % 6) + 5;
+   
 
-	printf("correndo ");
-
-	for (int i = 1; i <= corrida; i++)
-	{
-		printf(" %dm ", i);
-		fflush(stdout);
-		dormir(0.4); // segundos
-	}
-
-	printf(" ");
-	return corrida;
-}
-
-int aparicoes(int evento)
-{
-	evento = rand() % 2;
-
-	if (evento == 0)
-	{
-		printf("🌵 \n");
-		printf(" \n 🌵 Um cacto apareceu! (1 - Pular | 2 - Atropelar): ");
-	}
-	else
-	{
-		printf("🦅 \n");
-		printf(" \n 🦅 Um abutre apareceu! (1 - Abaixar | 2 - Colidir): ");
-	}
-
-	return evento;
-}
-
-float atualizarEnergia(float energia, int dano)
-{
-	energia = energia - dano;
-	if (energia < 0)
-	{
-		energia = 0;
-	}
-	return energia;
-}
-
-int atualizarPontuacao(int pontuacao, int corrida)
-{
-	return pontuacao + corrida;
-}
-
-int verificarEscolhaJogador()
-{
-	int escolha;
-
-	scanf("%d", &escolha);
-
-	if (escolha == 1 || escolha == 2)
-	{
-		return escolha; // escolhas certas 1 ou 2
-	}
-
-	return escolha = 0;
-}
-
-void aplicarEsquiva(int evento, int corrida)
-{
-	if (evento == 0)
-	{
-		printf("\nVocê pulou com perfeição!!\n");
-		printf("Voce ganhou %d pontos!!!\n\n", corrida);
-	}
-	else
-	{
-		printf("\nVocê abaixou com perfeição!!\n");
-		printf("Voce ganhou %d pontos!!!\n\n", corrida);
-	}
-	dormir(3);
-}
-
-float aplicarDano(int escolha, int evento, float energia)
-{
-	if (escolha == 2)
-	{
-		if (evento == 0)
-		{
-			printf("\nVocê bateu no cacto! \n ");
-			printf("-10 de energia \n\n ");
-			energia = atualizarEnergia(energia, 10);
-		}
-		else
-		{
-			printf("\nVocê bateu no abutre! \n ");
-			printf("-20 de energia \n\n ");
-			energia = atualizarEnergia(energia, 20);
-		}
-	}
-	if (escolha == 0)
-	{
-		if (evento == 0)
-		{
-			printf("\nComando inválido! \n ");
-			printf("O Dino ficou confuso e atropelou o cacto! \n ");
-			printf(" -15 de energia \n\n ");
-			energia = atualizarEnergia(energia, 15);
-		}
-		else
-		{
-			printf("\nComando inválido ! \n ");
-			printf("O Dino ficou confuso e colidiu no abutre ! \n ");
-			printf(" - 25 de energia \n\n ");
-			energia = atualizarEnergia(energia, 25);
-		}
-	}
-	dormir(3); // segundos
-	return energia;
-}
-
-void conclusao(float energia, int pontuacao)
-{
-	if (energia <= 0)
-	{
-		limparTela();
-		cabecalho(energia, pontuacao);
-		printf(" \nEnergia esgotada!\n ");
-		printf("GAME OVER ☠️\n\n ");
-	}
-
-	if (pontuacao >= 50)
-	{
-		limparTela();
-		cabecalho(energia, pontuacao);
-		printf("\nAtingiu %d metros\n", pontuacao);
-		printf(" VOCÊ GANHOU ! 🏆\n\n ");
-	}
+    return 0;
 }
