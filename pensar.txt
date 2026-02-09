@@ -1,13 +1,26 @@
 Guerreiro
 Espadachin
 
+cavaleiro
+campeão
+
+templario
+paladino
+
 Mago
 
 Gatuno
 Ladino
 
+assassino
+gangster
+
+
+
 Cigano
 
 Curandeiro
+clérigo
 
-caçador
+arqueiro
+pistoleiro
