@@ -16,7 +16,7 @@ Compila o programa e mostra avisos do compilador sobre possíveis problemas.
 ----------------------
 ▶️ EXECUÇÃO DO PROGRAMA
 ----------------------
-💻 ./dinorunc
+💻 ./dinorunc.exe
 Executa o programa dinorunc.exe que está na pasta atual.
 No Linux/Termux o .exe é apenas parte do nome.
 

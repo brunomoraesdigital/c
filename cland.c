@@ -33,13 +33,13 @@ int main()
     int sorte = 1;
     int agilidade = 1;
     int vitalidade = 1;
-    
+
     int pontosDeAtributos = 10;
-    
-    float ataqueMagico = (inteligencia*3)+(destreza/2)+(sorte);
-    float ataqueFisico = (forca*2)+(destreza/2)+(sorte);
-    float ataqueDistancia = (destreza*3)+(inteligencia/2)+(sorte);
-    
+
+    float ataqueMagico = (inteligencia * 3) + (destreza / 2.0) + (sorte);
+    float ataqueFisico = (forca * 2) + (destreza / 2.0) + (sorte);
+    float ataqueDistancia = (destreza * 3) + (inteligencia / 2.0) + (sorte);
+
     printf("???::\n");
     printf("--------------------------------\n");
     printf("Hmm, vejamos... 👀\n");
@@ -74,7 +74,7 @@ int main()
     printf("Vit: %d\tAgi: %d\n", vitalidade, agilidade);
     printf("For: %d\tInt: %d\n", forca, inteligencia);
     printf("Des: %d\tSor: %d\n", destreza, sorte);
-    
+
     printf("Ataque Físico: %.2f \n", ataqueFisico);
     printf("Ataque Mágico: %.2f\n", ataqueMagico);
     printf("Pontos de Atributos: %d", pontosDeAtributos);
@@ -105,16 +105,39 @@ int main()
     printf("Agora o grupo está completo. 🛡️⚔️\n");
     printf("--------------------------------\n\n");
 
-printf("Eldrin:\n");
+    printf("Eldrin:\n");
     printf("--------------------------------\n");
     printf("Antes de irmos, %s,\n", nome);
     printf("Você deve distribuir seus pontos de atributos. 🎯\n");
-    
-    
+
+    printf("Inteligencia: ");
     scanf("%d", &inteligencia);
+    printf("Destreza: ");
     scanf("%d", &destreza);
 
-   
+    pontosDeAtributos = pontosDeAtributos - (inteligencia + destreza);
+
+    ataqueMagico = (inteligencia * 3) + (destreza / 2.0) + (sorte);
+    ataqueFisico = (forca * 2) + (destreza / 2.0) + (sorte);
+    ataqueDistancia = (destreza * 3) + (inteligencia / 2.0) + (sorte);
+
+    printf("Registro:\n");
+    printf("--------------------------------\n");
+    printf("Aventureiro %s 🙎🏻\n", nome);
+    printf("classe: %s\n", classe);
+    printf("Rank %c\n", rank);
+    printf("Idade %d anos\n", idade);
+    printf("Altura %.2f cm\n", altura);
+    printf("Peso %.2f kg\n", peso);
+    printf("\nAtributos:\n");
+    printf("Vit: %d\tAgi: %d\n", vitalidade, agilidade);
+    printf("For: %d\tInt: %d\n", forca, inteligencia);
+    printf("Des: %d\tSor: %d\n", destreza, sorte);
+
+    printf("Ataque Físico: %.2f \n", ataqueFisico);
+    printf("Ataque Mágico: %.2f\n", ataqueMagico);
+    printf("Pontos de Atributos: %d\n", pontosDeAtributos);
+    printf("--------------------------------\n\n");
 
     return 0;
 }
