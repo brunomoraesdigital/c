@@ -36,9 +36,9 @@ int main()
 
     int pontosDeAtributos = 10;
 
-    float ataqueMagico = (inteligencia * 3) + (destreza / 2.0) + (sorte);
-    float ataqueFisico = (forca * 2) + (destreza / 2.0) + (sorte);
-    float ataqueDistancia = (destreza * 3) + (inteligencia / 2.0) + (sorte);
+    float ataqueMagico;
+    float ataqueFisico;
+    float ataqueDistancia;
 
     printf("???::\n");
     printf("--------------------------------\n");
@@ -115,11 +115,26 @@ int main()
     printf("Destreza: ");
     scanf("%d", &destreza);
 
+    int resetPontosDeAtributos = pontosDeAtributos;
+
     pontosDeAtributos = pontosDeAtributos - (inteligencia + destreza);
 
-    ataqueMagico = (inteligencia * 3) + (destreza / 2.0) + (sorte);
-    ataqueFisico = (forca * 2) + (destreza / 2.0) + (sorte);
-    ataqueDistancia = (destreza * 3) + (inteligencia / 2.0) + (sorte);
+    if (pontosDeAtributos < 0)
+    {
+        printf("Eldrin: Você tentou usar mais poder do que tem! Treine mais para obter mais poder!\n");
+        pontosDeAtributos = resetPontosDeAtributos;
+    }
+    else if (pontosDeAtributos == 0)
+    {
+        printf("Eldrin: VVocê conhece bem seus limites!\n");
+        ataqueMagico = (inteligencia * 3) + (destreza / 2.0) + (sorte);
+        ataqueFisico = (forca * 2) + (destreza / 2.0) + (sorte);
+        ataqueDistancia = (destreza * 3) + (inteligencia / 2.0) + (sorte);
+    }
+    else
+    {
+        printf("Eldrin: Voce ainda tem %d pontos de poder sobrando. Use-os bem!\n", pontosDeAtributos);
+    }
 
     printf("Registro:\n");
     printf("--------------------------------\n");
@@ -138,6 +153,8 @@ int main()
     printf("Ataque Mágico: %.2f\n", ataqueMagico);
     printf("Pontos de Atributos: %d\n", pontosDeAtributos);
     printf("--------------------------------\n\n");
+
+    
 
     return 0;
 }
