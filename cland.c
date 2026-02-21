@@ -1,8 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #ifdef _WIN32
+// Sistema: Windows 
 #include <windows.h>
+#else
+// Sistema: Linux / Android 
+#include <unistd.h>
 #endif
+double seg = 3;
 
 int main()
 {
@@ -10,7 +17,15 @@ int main()
 	SetConsoleOutputCP(CP_UTF8);
 #endif
 
-	printf("CRONICAS DE C-LAND 🏰✨\n\n");
+#ifdef _WIN32
+    system("cls");
+    printf("CRONICAS DE C-LAND 🏰✨\n\n");  
+#else
+    system("clear");
+    printf("CRONICAS DE C-LAND 🏰✨\n\n");  
+#endif
+ 
+
 
 	printf("Recepcionista:\n");
 	printf("--------------------------------\n");
@@ -19,7 +34,18 @@ int main()
 	printf("na guilda dos aventureiros,\n");
 	printf("preencha este formulario. 📝\n");
 	printf("--------------------------------\n\n");
-
+#ifdef _WIN32
+    Sleep((int)(seg * 1000 + 0.5));
+#else
+    usleep((int)(seg * 1000000 + 0.5));
+#endif
+#ifdef _WIN32
+    system("cls");
+    printf("CRONICAS DE C-LAND 🏰✨\n\n");  
+#else
+    system("clear");
+    printf("CRONICAS DE C-LAND 🏰✨\n\n");  
+#endif
 	float peso = 0;
 	float altura = 0;
 	int idade = 0;
@@ -35,7 +61,7 @@ int main()
 	int agilidade = 1;
 	int vitalidade = 1;
 
-	int pontosDeAtributos = 10;
+	int pontosDeAtributos = 3;
 
 	float ataqueMagico = 0;
 	float ataqueFisico = 0;
@@ -150,7 +176,7 @@ int main()
 		scanf(" %c", &decisaoAtributos);
 		if (decisaoAtributos == 's')
 		{
-			pontosDeAtributos--;
+			pontosDeAtributos--; //0
 			inteligencia++;
 		}
 
@@ -160,8 +186,10 @@ int main()
 		scanf(" %c", &decisaoAtributos);
 		if (decisaoAtributos == 's')
 		{
-			pontosDeAtributos--;
+			pontosDeAtributos--; //-1
 			destreza++;
+			printf("PA -> %d\n", pontosDeAtributos);
+			printf("RPA-> %d\n", resetPontosDeAtributos);
 		}
 		printf("--------------------------------\n");
 		
@@ -169,7 +197,7 @@ int main()
 		printf("--------------------------------\n");
 		if (pontosDeAtributos > 0)
 		{
-			resetPontosDeAtributos = pontosDeAtributos;
+			resetPontosDeAtributos = pontosDeAtributos; //1
 			resetAtributoInteligencia = inteligencia;
 			resetAtributoDestreza = destreza;
 
