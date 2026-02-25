@@ -17,9 +17,11 @@ int destreza = 1;
 int vitalidade = 1;
 int sorte = 1;
 
-int nvlPersonagem = 1;
 
-int pontosAtributos[];
+int nivelPersonagem = 1;
+int pontosAtributos = 0;
+int pontosExperiencia = 0;
+
 
 char nome[25] = { "Sem nome" };
 
@@ -58,25 +60,44 @@ int main()
 			printf("Não foi possível compreender sua resposta\n");
 
 		}
-		printf("Aventureiro %s,\n ", nome);
+		printf("\nAventureiro %s,\n ", nome);
 		printf("Podemos continuar? (s|n)");
 		scanf(" %c", &decisao[1]);
 	}
 	while (decisao[1] == 'n');
 
-	printf("Boas vindas! Podemos prosseguir!\n");
+	printf("\nConcluído essa fase\n podemos ir adianter!\n");
 
-	do
-	{
-		printf("Quer conhecer seus\n atributos iniciais? (s|n)");
-		scanf(" %c", &decisao[2]);
-		if (decisao[2] = 's');
-		for (i = 0; i < 10; i++)
-		{
-			pontosAtributos[i] = rand() % 10 + 1;
-		}
-		
-	}
-		while (decisao[3] == 'n');
-		return 0;
-	}
+	printf("pegue essa poção, é sangue de dragão, ela irá aumentar seus atributos temporariamente");
+
+		inteligencia = (rand() % 10) + 1;
+		forca = (rand() % 10) + 1;
+		agilidade = (rand() % 10) + 1;
+		destreza = (rand() % 10) + 1;
+		vitalidade = (rand() % 10) + 1;
+		sorte = (rand() % 10) + 1;
+
+
+
+	printf("Agora toque nesse cristal, \n e poderemos visualizar seus atributos.\n\n");
+
+	printf("+ - - - - - - - - - - - - - +\n");
+	printf("| - - - - Atributos - - - - |\n");
+	printf("+ - - - - - - - - - - - - - +\n");
+
+	printf("\nNível = 1\n");
+
+	printf("\nint = %d \tfor= %d\n", inteligencia, forca);
+	printf("agi = %d \tdes= %d\n", agilidade, destreza);
+	printf("vit = %d \tsor = %d\n", vitalidade, sorte);
+
+	printf("\nPontos de Atributos= 0\n");
+	printf("Pontos de Experiência = 0\n");
+
+	printf("\n+ - - - - - - - - - - - - - +\n");
+
+	
+
+	return 0;
+}
+
