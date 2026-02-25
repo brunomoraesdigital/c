@@ -68,7 +68,7 @@ int main()
 
 	printf("\nConcluído essa fase\n podemos ir adianter!\n");
 
-	printf("pegue essa poção, é sangue de dragão, ela irá aumentar seus atributos temporariamente");
+	printf("pegue essa poção e beba, é sangue de dragão, ela irá aumentar seus atributos temporariamente");
 
 		inteligencia = (rand() % 10) + 1;
 		forca = (rand() % 10) + 1;
@@ -95,7 +95,7 @@ int main()
 	printf("Pontos de Experiência = 0\n");
 
 	printf("\n+ - - - - - - - - - - - - - +\n");
-
+	
 	
 
 	return 0;
