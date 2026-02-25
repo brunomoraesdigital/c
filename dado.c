@@ -19,9 +19,10 @@ int sorte = 1;
 
 int nvlPersonagem = 1;
 
-int pntAtributos = 0;
+int pontosAtributos[];
 
 char nome[25] = { "Sem nome" };
+
 
 int main()
 {
@@ -29,29 +30,53 @@ int main()
 	SetConsoleOutputCP(CP_UTF8);
 #endif
 
-	char decisaoA = 'n';
-	char decisaoB = 'n';
+	char decisao[25];
+
+	int i;
+	for (i = 0; i < 25; i++)
+	{
+		decisao[i] = 'n';
+	}
+
 	do
 	{
-		printf("Quer definir um nome? ");
-		scanf(" %c", &decisaoA);
-		if (decisaoA == 's')
+		printf("Quer registrar seu nome? (s|n) ");
+		scanf(" %c", &decisao[0]);
+		if (decisao[0] == 's')
 		{
 			printf("Qual o seu nome? ");
 			scanf(" %24s", nome);
+
 		}
-		else if (decisaoA == 'n')
+		else if (decisao[0] == 'n')
 		{
-			printf("Escolheu não definir o nome\n");
+			printf("Escolheu não registrar um nome\n");
+
 		}
 		else
 		{
-			printf("Resposta irreconhecivel\n");
+			printf("Não foi possível compreender sua resposta\n");
+
 		}
-		printf("Aventureiro %s,\n ",  nome);
-		printf("Confirma seu nome? ");
-		scanf(" %c", &decisaoB);
+		printf("Aventureiro %s,\n ", nome);
+		printf("Podemos continuar? (s|n)");
+		scanf(" %c", &decisao[1]);
 	}
-	while (decisaoB == 'n');
-	return 0;
-}
+	while (decisao[1] == 'n');
+
+	printf("Boas vindas! Podemos prosseguir!\n");
+
+	do
+	{
+		printf("Quer conhecer seus\n atributos iniciais? (s|n)");
+		scanf(" %c", &decisao[2]);
+		if (decisao[2] = 's');
+		for (i = 0; i < 10; i++)
+		{
+			pontosAtributos[i] = rand() % 10 + 1;
+		}
+		
+	}
+		while (decisao[3] == 'n');
+		return 0;
+	}
