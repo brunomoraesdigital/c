@@ -96,7 +96,19 @@ int main()
 
 	printf("\n+ - - - - - - - - - - - - - +\n");
 	
+	printf("\nVoce está pronto para a batalha? ");
+	scanf(" %c", &decisao[2]);
 	
+	    int intMosn = (rand() % 10) + 1;
+		int forMosn = (rand() % 10) + 1;
+		int agiMons = (rand() % 10) + 1;
+		int desMons = (rand() % 10) + 1;
+		int vitMons = (rand() % 10) + 1;
+		int sorMons = (rand() % 10) + 1;
+	
+	do {
+		
+	} while (decisao[2] == 's');
 
 	return 0;
 }
