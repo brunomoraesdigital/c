@@ -148,7 +148,7 @@ int main()
 
 	printf("\n+ - - - - - - - - - - - - - +\n");
 
-	printf("\nVoce está pronto para a loó0o0o0ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
+
 
 
 
