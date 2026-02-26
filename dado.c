@@ -15,7 +15,7 @@ char nome[25] = { "Sem nome" };
 
 int main()
 {
-#ifdef _WIN32
+#ifdef _WIN3299
 	SetConsoleOutputCP(CP_UTF8);
 #endif
 
@@ -57,8 +57,38 @@ int main()
 
 	printf
 		("pegue essa poção e beba, é sangue de dragão dourado, ela irá aumentar seu nível.");
-	pronto("tomar poção?");
-	scanf("%c", &decisao[2]);
+
+	int pocao = 5;
+	int nv_jogador = 1;
+	int pts_atributos = 0;
+	int pts_experiencia = 0;
+
+	do
+	{
+		printf("tomar poção? (s|n) ");
+		scanf("%c", &decisao[2]);
+		if (decisao[2] == 's')
+		{
+			nv_jogador++;
+			pocao--;
+			pts_atributos += 5;
+		}
+		else if (decisao[2] == 's')
+		{
+			pocao = 0;
+		}
+		else
+		{
+			printf("Não entendi a sua resposta . . .\n");
+			decisao[2] == 's';
+		}
+	}
+	while (decisao[2] == 's' && pocao > 0);
+
+	swhit(decisao[3])
+	{
+		
+	}
 
 	int inteligencia = 1;
 	int forca = 1;
@@ -67,25 +97,29 @@ int main()
 	int vitalidade = 1;
 	int sorte = 1;
 
-	int nivelPersonagem = 1;
-	int pontosAtributos = 0;
-	int pontosExperiencia = 0;
-
 	/* - - - - - - - - - - - - - */
 
 	int nivelMons = 5;
-	
+
 	int intMosn = (rand() % nivelMons) + 1;
 	int forMosn = (rand() % nivelMons) + 1;
 	int agiMons = (rand() % nivelMons) + 1;
-	int desMons = (rand() % nivelMons) + 1;
+	int desMons = (rand() % nivelMons) + 1;p
 	int vitMons = (rand() % nivelMons) + 1;
 	int sorMons = (rand() % nivelMons) + 1;
 
 	/* - - - - - - - - - - - - - */
 
+	int NV = 0;
+	int INT = 0;
+	int FOR = 0;
+	int DES = 0;
+	int AGI = 0;
+	int VIT = 0;
+	int SOR = 0;
+
 	float atq_fis = (FOR * 1) + (DES / 2) + SOR;
-	float atq_mag = (INT * 2) + (des / 2) + SOR;
+	float atq_mag = (INT * 2) + (DES / 2) + SOR;
 
 	float def = ((VIT * 3) + (FOR / 2) + (AGI * 2) + NV) * 100;
 
@@ -114,8 +148,7 @@ int main()
 
 	printf("\n+ - - - - - - - - - - - - - +\n");
 
-	printf("\nVoce está pronto para a batalha? ");
-	scanf(" %c", &decisao[2]);
+	printf("\nVoce está pronto para a loó0o0o0ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
 
 
 
@@ -126,6 +159,5 @@ int main()
 
 	}
 	while (decisao[2] == 's');
-
 	return 0;
 }
