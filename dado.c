@@ -10,19 +10,6 @@
 #include <unistd.h>
 #endif
 
-int inteligencia = 1;
-int forca = 1;
-int agilidade = 1;
-int destreza = 1;
-int vitalidade = 1;
-int sorte = 1;
-
-
-int nivelPersonagem = 1;
-int pontosAtributos = 0;
-int pontosExperiencia = 0;
-
-
 char nome[25] = { "Sem nome" };
 
 
@@ -69,29 +56,31 @@ int main()
 	printf("\nConcluído essa fase\n podemos ir adianter!\n");
 
 	printf
-		("pegue essa poção e beba, é sangue de dragão, ela irá aumentar seus atributos temporariamente");
-		pronto("tomar poção?");
-		scanf( "%c", &decisao[2]);
-	if (decisao[2] == 's')
-	{
-		inteligencia = (rand() % 10) + 1;
-		forca = (rand() % 10) + 1;
-		agilidade = (rand() % 10) + 1;
-		destreza = (rand() % 10) + 1;
-		vitalidade = (rand() % 10) + 1;
-		sorte = (rand() % 10) + 1;
-	}
+		("pegue essa poção e beba, é sangue de dragão dourado, ela irá aumentar seu nível.");
+	pronto("tomar poção?");
+	scanf("%c", &decisao[2]);
+
+	int inteligencia = 1;
+	int forca = 1;
+	int agilidade = 1;
+	int destreza = 1;
+	int vitalidade = 1;
+	int sorte = 1;
+
+	int nivelPersonagem = 1;
+	int pontosAtributos = 0;
+	int pontosExperiencia = 0;
+
+	/* - - - - - - - - - - - - - */
+
+	int nivelMons = 5;
 	
-	int intMosn = (rand() % 4) + 1;
-	int forMosn = (rand() % 4) + 1;
-	int agiMons = (rand() % 4) + 1;
-	int desMons = (rand() % 4) + 1;
-	int vitMons = (rand() % 4) + 1;
-	int sorMons = (rand() % 4) + 1;
-	int nivelMons = 1;
-	float atqMons = 0;
-	float defMons = 0;
-	float defMons = 0;
+	int intMosn = (rand() % nivelMons) + 1;
+	int forMosn = (rand() % nivelMons) + 1;
+	int agiMons = (rand() % nivelMons) + 1;
+	int desMons = (rand() % nivelMons) + 1;
+	int vitMons = (rand() % nivelMons) + 1;
+	int sorMons = (rand() % nivelMons) + 1;
 
 	/* - - - - - - - - - - - - - */
 
@@ -103,8 +92,7 @@ int main()
 	float vida_max = (VIT * 3 + NV * 2) * 100;
 	float mana_max = (INT * 3 + NV * 2) * 100;
 
-
-	float dano_fia = atq_fis - def;
+	float dano_fis = atq_fis - def;
 	float dano_mag = atq_mag - def;
 
 
