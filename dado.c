@@ -15,7 +15,7 @@ char nome[25] = { "Sem nome" };
 
 int main()
 {
-#ifdef _WIN3299
+#ifdef _WIN32
 	SetConsoleOutputCP(CP_UTF8);
 #endif
 
@@ -56,7 +56,7 @@ int main()
 	printf("\nConcluído essa fase\n podemos ir adianter!\n");
 
 	printf
-		("pegue essa poção e beba, é sangue de dragão dourado, ela irá aumentar seu nível.");
+		("pegue essa poção e beba, é sangue de dragão dourado, ela irá aumentar seu nível.\n");
 
 	int pocao = 5;
 	int nv_jogador = 1;
@@ -73,12 +73,13 @@ int main()
 	do
 	{
 		printf("tomar poção? (s|n) ");
-		scanf("%c", &decisao[2]);
+		scanf(" %c", &decisao[2]);
 		if (decisao[2] == 's')
 		{
 			nv_jogador++;
 			pocao--;
 			pts_atributos += 5;
+			printf("Passou de nivel! Agora e %d e recebeu 5pts de atributos", nv_jogador);
 		}
 		else if (decisao[2] == 's')
 		{
@@ -93,7 +94,7 @@ int main()
 	while (decisao[2] == 's' && pocao > 0);
 	
 		printf("Quer distribuir seus pontos de atributos?: (s | n )");
-		scanf("%d", &decisao[3]);
+		scanf(" %c", &decisao[3]);
 
 	while (decisao[3] == 's' && pts_atributos > 0)
 	{
@@ -107,7 +108,7 @@ int main()
 		printf("5 - Vitalidade\n");
 		printf("6 - Sorte\n");
 
-		scanf("%d", &opcao);
+		scanf(" %d", &opcao);
 
 		switch (opcao)
 		{
