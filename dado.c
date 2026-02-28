@@ -63,6 +63,13 @@ int main()
 	int pts_atributos = 0;
 	int pts_experiencia = 0;
 
+	int inteligencia = 1;
+	int forca = 1;
+	int agilidade = 1;
+	int destreza = 1;
+	int vitalidade = 1;
+	int sorte = 1;
+
 	do
 	{
 		printf("tomar poção? (s|n) ");
@@ -84,18 +91,54 @@ int main()
 		}
 	}
 	while (decisao[2] == 's' && pocao > 0);
+	
+		printf("Quer distribuir seus pontos de atributos?: (s | n )");
+		scanf("%d", &decisao[3]);
 
-	swhit(decisao[3])
+	while (decisao[3] == 's' && pts_atributos > 0)
 	{
-		
-	}
+		int opcao = 0;
 
-	int inteligencia = 1;
-	int forca = 1;
-	int agilidade = 1;
-	int destreza = 1;
-	int vitalidade = 1;
-	int sorte = 1;
+		printf("Escolha um atributo:\n");
+		printf("1 - Inteligencia\n");
+		printf("2 - Forca\n");
+		printf("3 - Agilidade\n");
+		printf("4 - Destreza\n");
+		printf("5 - Vitalidade\n");
+		printf("6 - Sorte\n");
+
+		scanf("%d", &opcao);
+
+		switch (opcao)
+		{
+		case 1:
+			inteligencia += 1;
+			break;
+
+		case 2:
+			forca += 1;
+			break;
+
+		case 3:
+			agilidade += 1;
+			break;
+
+		case 4:
+			destreza += 1;
+			break;
+
+		case 5:
+			vitalidade += 1;
+			break;
+
+		case 6:
+			sorte += 1;
+			break;
+
+		default:
+			printf("Opção inválida!\n");
+		}
+	}
 
 	/* - - - - - - - - - - - - - */
 
@@ -104,7 +147,7 @@ int main()
 	int intMosn = (rand() % nivelMons) + 1;
 	int forMosn = (rand() % nivelMons) + 1;
 	int agiMons = (rand() % nivelMons) + 1;
-	int desMons = (rand() % nivelMons) + 1;p
+	int desMons = (rand() % nivelMons) + 1;
 	int vitMons = (rand() % nivelMons) + 1;
 	int sorMons = (rand() % nivelMons) + 1;
 
