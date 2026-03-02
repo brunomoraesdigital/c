@@ -92,9 +92,9 @@ int main()
 		}
 	}
 	while (decisao[2] == 's' && pocao > 0);
-	
-		printf("Quer distribuir seus pontos de atributos?: (s | n )");
-		scanf(" %c", &decisao[3]);
+
+	printf("Quer distribuir seus pontos de atributos?: (s | n )");
+	scanf(" %c", &decisao[3]);
 
 	while (decisao[3] == 's' && pts_atributos > 0)
 	{
@@ -143,42 +143,18 @@ int main()
 
 	/* - - - - - - - - - - - - - */
 
-	int nivelMons = 5;
+	float atq_fis_jogador = (forca * 1) + (destreza / 2) + SOR;
+	float atq_mag _jogador = (inteligencia * 2) + (destreza / 2) + sorte;
 
-	int intMosn = (rand() % nivelMons) + 1;
-	int forMosn = (rand() % nivelMons) + 1;
-	int agiMons = (rand() % nivelMons) + 1;
-	int desMons = (rand() % nivelMons) + 1;
-	int vitMons = (rand() % nivelMons) + 1;
-	int sorMons = (rand() % nivelMons) + 1;
+	float def_jogador = ((vitalidade * 3) + (forca / 2) + (agilidade * 2) + nv_jogador) * 10;
 
-	/* - - - - - - - - - - - - - */
-
-	int NV = 0;
-	int INT = 0;
-	int FOR = 0;
-	int DES = 0;
-	int AGI = 0;
-	int VIT = 0;
-	int SOR = 0;
-
-	float atq_fis = (FOR * 1) + (DES / 2) + SOR;
-	float atq_mag = (INT * 2) + (DES / 2) + SOR;
-
-	float def = ((VIT * 3) + (FOR / 2) + (AGI * 2) + NV) * 100;
-
-	float vida_max = (VIT * 3 + NV * 2) * 100;
-	float mana_max = (INT * 3 + NV * 2) * 100;
-
-	float dano_fis = atq_fis - def;
-	float dano_mag = atq_mag - def;
-
-
-
-	printf("Agora toque nesse cristal, \n e poderemos visualizar seus atributos.\n\n");
+	float vida_max_jogador = (vitalidade * 3 + nv_jogador * 2) * 10;
+	float mana_max_jogador = (inteligencia * 3 + nv_jogador * 2) * 10;
+	
+		printf("Agora toque nesse cristal, \n e poderemos visualizar seus atributos.\n\n");
 
 	printf("+ - - - - - - - - - - - - - +\n");
-	printf("| - - - - Atributos - - - - |\n");
+	printf("| - - - - Jogador  - - - - |\n");
 	printf("+ - - - - - - - - - - - - - +\n");
 
 	printf("\nNível = 1\n");
@@ -191,6 +167,52 @@ int main()
 	printf("Pontos de Experiência = 0\n");
 
 	printf("\n+ - - - - - - - - - - - - - +\n");
+
+
+	int nivelMons = 5;
+
+	int intMosn = (rand() % nivelMons) + 1;
+	int forMosn = (rand() % nivelMons) + 1;
+	int agiMons = (rand() % nivelMons) + 1;
+	int desMons = (rand() % nivelMons) + 1;
+	int vitMons = (rand() % nivelMons) + 1;
+	int sorMons = (rand() % nivelMons) + 1;
+
+	float atq_fis_mons = (forMosn * 1) + (desMons / 2) + sorMons;
+	float atq_mag_mons = (intMosn * 2) + (desMons / 2) + sorMons;
+
+	float def_mons = ((vitMons * 3) + (forMosn / 2) + (AGI * 2) + nivelMons) * 10;
+
+	float vida_max_mons = (vitMons * 3 + nivelMons * 2) * 10;
+	float mana_max_mons = (intMosn * 3 + nivelMons * 2) * 10;
+
+	printf(" ..., \n ...\n\n");
+
+	printf("+ - - - - - - - - - - - - - +\n");
+	printf("| - - - - monstro - - - - |\n");
+	printf("+ - - - - - - - - - - - - - +\n");
+
+	printf("\nNível = %d\n,", nivelMons);
+
+	printf("\nint = %d \tfor= %d\n", inteligencia, forca);
+	printf("agi = %d \tdes= %d\n", agilidade, destreza);
+	printf("vit = %d \tsor = %d\n", vitalidade, sorte);
+
+	printf("\nPontos de Atributos= 0\n");
+	printf("Pontos de Experiência = 0\n");
+
+	printf("\n+ - - - - - - - - - - - - - +\n");
+
+
+	float dano_fis_jogador = atq_fis_jogador - def;
+	float dano_mag_jogador = atq_mag_jogador - def;
+
+	float dano_fis_mons = atq_fis_mons - def_jogador;
+	float dano_mag_mons = atq_mag_mons - def_jogador;
+	
+
+
+
 
 
 
