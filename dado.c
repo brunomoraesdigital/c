@@ -143,87 +143,136 @@ int main()
 
 	/* - - - - - - - - - - - - - */
 
-	float atq_fis_jogador = (forca * 1) + (destreza / 2) + SOR;
-	float atq_mag _jogador = (inteligencia * 2) + (destreza / 2) + sorte;
+	float atq_fis_jogador = (forca * 1) + (destreza / 2) + sorte;
+	float atq_mag_jogador = (inteligencia * 2) + (destreza / 2) + sorte;
 
-	float def_jogador = ((vitalidade * 3) + (forca / 2) + (agilidade * 2) + nv_jogador) * 10;
+	float def_jogador = 0;
 
 	float vida_max_jogador = (vitalidade * 3 + nv_jogador * 2) * 10;
 	float mana_max_jogador = (inteligencia * 3 + nv_jogador * 2) * 10;
-	
-		printf("Agora toque nesse cristal, \n e poderemos visualizar seus atributos.\n\n");
+
+	printf("Agora toque nesse cristal, \n e poderemos visualizar seus atributos.\n\n");
 
 	printf("+ - - - - - - - - - - - - - +\n");
 	printf("| - - - - Jogador  - - - - |\n");
 	printf("+ - - - - - - - - - - - - - +\n");
 
-	printf("\nNível = 1\n");
+	printf("\nNível : \n", nv_jogador);
 
-	printf("\nint = %d \tfor= %d\n", inteligencia, forca);
-	printf("agi = %d \tdes= %d\n", agilidade, destreza);
-	printf("vit = %d \tsor = %d\n", vitalidade, sorte);
+	printf("\nint:  %d \tfor: %d\n", inteligencia, forca);
+	printf("agi: %d \tdes: %d\n", agilidade, destreza);
+	printf("vit: %d \tsor: %d\n", vitalidade, sorte);
 
-	printf("\nPontos de Atributos= 0\n");
-	printf("Pontos de Experiência = 0\n");
+	printf("\nVida: %d\n,", vida_max_jogador);
+	printf("Mana: %d\n", mana_max_jogador);
+	printf("Atq Fis. : = %d\n,", atq_fis_jogador);
+	printf("Atq Mag.: = %d\n,", atq_fis_jogador);
+	printf("Def: = %d\n,", def_jogador);
+
+	printf("\nPontos de Atributos:  \n", pts_atributos);
+	printf("Pontos de Experiência: \n", pts_experiencia);
 
 	printf("\n+ - - - - - - - - - - - - - +\n");
 
 
 	int nivelMons = 5;
 
-	int intMosn = (rand() % nivelMons) + 1;
-	int forMosn = (rand() % nivelMons) + 1;
+	int intMons = (rand() % nivelMons) + 1;
+	int forMons = (rand() % nivelMons) + 1;
 	int agiMons = (rand() % nivelMons) + 1;
 	int desMons = (rand() % nivelMons) + 1;
 	int vitMons = (rand() % nivelMons) + 1;
 	int sorMons = (rand() % nivelMons) + 1;
 
-	float atq_fis_mons = (forMosn * 1) + (desMons / 2) + sorMons;
-	float atq_mag_mons = (intMosn * 2) + (desMons / 2) + sorMons;
+	float atq_fis_mons = (forMons * 1) + (desMons / 2) + sorMons;
+	float atq_mag_mons = (intMons * 2) + (desMons / 2) + sorMons;
 
-	float def_mons = ((vitMons * 3) + (forMosn / 2) + (AGI * 2) + nivelMons) * 10;
+	float def_mons = ((vitMons * 3) + (forMons / 2) + (agiMons * 2) + nivelMons) * 10;
 
 	float vida_max_mons = (vitMons * 3 + nivelMons * 2) * 10;
-	float mana_max_mons = (intMosn * 3 + nivelMons * 2) * 10;
+	float mana_max_mons = (intMons * 3 + nivelMons * 2) * 10;
 
 	printf(" ..., \n ...\n\n");
 
 	printf("+ - - - - - - - - - - - - - +\n");
-	printf("| - - - - monstro - - - - |\n");
+	printf("| - - - -  MONSTRO  - - - - |\n");
 	printf("+ - - - - - - - - - - - - - +\n");
 
-	printf("\nNível = %d\n,", nivelMons);
+	printf("\nNível:  %d\n,", nivelMons);
 
-	printf("\nint = %d \tfor= %d\n", inteligencia, forca);
-	printf("agi = %d \tdes= %d\n", agilidade, destreza);
-	printf("vit = %d \tsor = %d\n", vitalidade, sorte);
+	printf("\nint: %d \tfor: %d\n",  intMons, forMons);
+	printf("agi: %d \tdes: %d\n", agiMons, desMons);
+	printf("vit: %d \tsor: %d\n", vitMons, sorMons);
 
-	printf("\nPontos de Atributos= 0\n");
-	printf("Pontos de Experiência = 0\n");
+	printf("\nVida: %d\n,", vida_max_mons);
+	printf("\nMana:  %d\n", mana_max_mons);
+	printf("\nAtq Fis. : %d\n,", atq_fis_mons);
+	printf("\nAq Mag.:  %d\n,", atq_mag_mons);
+	printf("\nDef = %d\n", def_mons);
 
 	printf("\n+ - - - - - - - - - - - - - +\n");
 
 
-	float dano_fis_jogador = atq_fis_jogador - def;
-	float dano_mag_jogador = atq_mag_jogador - def;
+
+
 
 	float dano_fis_mons = atq_fis_mons - def_jogador;
 	float dano_mag_mons = atq_mag_mons - def_jogador;
-	
 
-
-
-
-
-
-
-
-
+	printf("vamos iniciar a batalha?\n");
 
 	do
 	{
+		int escolha = 0;
+		def_jogador = 0;
+		printf
+			("O que vai fazer ?\n1) Atacar com espada\t\nI2) Usar Magia\n3) Defrnder\n\t4)Fugir\n");
+		scanf("%d", decisao[4]);
+		switch (decisao[4])
+		{
+		case 1:
+			printf("Atacou com a espada \n");
+			float dano_fis_jogador = vida_max_mons - (atq_fis_jogador - def_mons);
+			break;
+		case 2:
+			printf("Atacou com magia \n1");
+			float dano_mag_jogador = vida_max_mons - (atq_mag_jogador - def_mons);
+			break;
+		case 3:
+			printf("Se defendeu\n");
+			def_jogador = ((vitalidade * 3) + (forca / 2) + (agilidade * 2) + nv_jogador) * 10;
+			break;
+		case 4:
+			printf("Decidiu Fugir \n");
+			decisao[4] = 's';
+			def_jogador = 0;
+			break;
+		default:
+			printf("Não fez nada, ficou conuso\n");
+			def_jogador = 0;
+		}
+		
+		decisao[5] = (rand() % 2) + 1;
+		
+				switch (decisao[5])
+		{
+		case 1:
+			printf("Atacou com a espada \n");
+			float dano_fis_mons = vida_max_jogador - (atq_fis_mons - def_jogador);
+			break;
+		case 2:
+			printf("Atacou com magia \n1");
+			float dano_mag_mons= vida_max_jogador - (atq_mag_mons - def_jogador);
+			 break;
+		case 3:
+			printf("Se defendeu\n");
+			def_mons = ((vitMons * 3) + (forMons / 2) + (agiMons * 2) + nivelMons) * 10;
+			break;		
+		}
 
 	}
-	while (decisao[2] == 's');
+	while (decisao[4] == 's');
 	return 0;
 }
+
+
