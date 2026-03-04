@@ -11,52 +11,82 @@
 #endif
 
 void exibirBarraVida();
-void calcularDano();
-void gerarMonstro();
+int calcularDano();
+int gerarMonstro();
 
 int main()
 {
 #ifdef _WIN32
 	SetConsoleOutputCP(CP_UTF8);
 #endif
+	srand(time(NULL));			// ← faltou isso
+
 	exibirBarraVida();
-	calcularDano();
-	gerarMonstro();
+
 
 	return 0;
 }
 
 
-char vidaBarra[11] = { "##########" };
+char vidaBarra[11];
 
 int vidaValor = 100;
 int def;
 int atq;
-int i = 0;
+int dano;
+int i;
+int j;
 
 // exibirBarraVida: Uma função que desenha o status (ex: [##### ] 50/100).
 void exibirBarraVida()
 {
-	printf("[");
-	for (i = 0; i < 10; i++)
+	do {
+			calcularDano();
+			
+	vidaValor += dano;
+	j = vidaValor / 10;
+
+	printf("\n[");
+	for (i = 0; i < j; i++)
 	{
+		printf("%c", vidaBarra[i] = '#');
+	}
+		for (i = j; i < 10; i++)
+	{
+		vidaBarra[i] = '-';
 		printf("%c", vidaBarra[i]);
 	}
 	printf("] %d/100", vidaValor);
+	} while (j > 0);
 }
 
 // calcularDano: Uma função que recebe ataque e defesa e retorna o valor
 // final.
-void calcularDano()
+int calcularDano()
 {
-	vidaValor = 100;
-	int def = ((rand() % 10) + 1)*5;
-	printf("\n%d", def);
+	gerarMonstro();
+	def = ((rand() % 5) + 1) * 10;
+
+	printf("\n\nDefesa: %d\n", def);
+	printf("Ataque: %d\n", atq);
+
+	if (def >= atq)
+	{
+		printf("\nDefendido");
+		dano = 0;
+		printf("Dano: %d", dano);
+	}
+	else
+	{
+		dano = def - atq;
+		printf("Dano: %d\n", dano);
+	}
+
 }
 
 // gerarMonstro: Uma função que sorteia o nome e poder do inimigo.
-void gerarMonstro()
+int gerarMonstro()
 {
-	int atq = ((rand() % 10) + 1)*10;
-	printf("\n%d", atq);
+	atq = ((rand() % 10) + 1) * 10;
+	return atq;
 }
