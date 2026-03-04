@@ -43,7 +43,7 @@ void exibirBarraVida()
 	do {
 			calcularDano();
 			
-	vidaValor += dano;
+	vidaValor -= dano;
 	j = vidaValor / 10;
 
 	printf("\n[");
@@ -78,7 +78,7 @@ int calcularDano()
 	}
 	else
 	{
-		dano = def - atq;
+		dano = atq - def;
 		printf("Dano: %d\n", dano);
 	}
 
