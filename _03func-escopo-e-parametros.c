@@ -22,4 +22,21 @@ int main()
 	return 0;
 }
 
+//exibir a barra de vida
+
+//sortear defesa
+
+//sortear ataque 
+
+//sortearMonstro
+
+//sortear arena 
+
+//sortear arma
+
+//menu onde o jogador escolhe se quer atacar ou se defender antes do monstro agir
+
+
+
+
 
