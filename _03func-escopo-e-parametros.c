@@ -19,7 +19,7 @@ int main()
 #endif
 	exibirBarraDeVida();
 
-	return 0;
+	srand(time(NULL)) return 0;
 }
 
 // exibir a barra de vida
@@ -29,52 +29,95 @@ void exibirBarraDeVida()
 }
 
 // sortear ataque
-int sortearAtqDef()
+int sortearAtq()
 {
 
-	atq = ((srand() % 10) + 1) * 10;
+	int atq;
 
+	atq = ((rand() % 10) + 1) * 10;
+	printf("Ataque %d", ata);
 	return atq;
 }
 
 // sortear defesa
-int sortearAtqDef()
+int sortearDef()
 {
 
 	def = ((srand() % 5) + 1) * 10;
-
+	printf("Defesa: %d", def);
 	return def;
 }
 
 // sortearMonstro
 int sortearMonstro()
 {
-	monstro = ((srand() % 4) + 1) ; 
-	if (monstro == 1) {
-		nomeMontro[8] = {"Rato"};
-	} else if (monstro == 2) {
-		nomeMontro[8] = {"Morcego"};
-	} else if (monstro == 3) {
-		nomeMontro[8] = {"Lobo"};
-	} else if (monstro == 4) {
-		nomeMontro[8] = {"Urso"};
+	monstro = ((srand() % 4) + 1);
+	if (monstro == 1)
+	{
+		nomeMonstro[8] = "Rato";
 	}
-	return nomeMontro[8];
+	else if (monstro == 2)
+	{
+		nomeMonstro[8] = "Morcego";
+	}
+	else if (monstro == 3)
+	{
+		nomeMonstro[8] = "Lobo";
+	}
+	else if (monstro == 4)
+	{
+		nomeMonstro[8] = "Urso";
+	}
+	printf("Apareceu %s", nomeMonstro);
+	return monstro;
 }
 
-// sortear arma
-int sortearArma()
+	// sortear arma
+int sortearGolpe()
 {
-	arma = ((srand() % 3) + 1) ; 
-	if (arma == 1) {
-		nomeArma[8] = {"faca"};
-	} else if (arma == 2) {
-		nomeArma[8] = {"espada"};
-	} else if (arma == ) {
-		nomeArma[8] = {"porrete"};
+	golpe = ((srand() % 3) + 1);
+	if (golpe == 1)
+	{
+		nomeGolpe[8] = "Golpe Básico";
 	}
-	return nomeArma[8];
+	else if (arma == 2)
+	{
+		nomeGolpe[8] = "Golpe 2";
+	}
+	else if (arma == 3)
+	{
+		nomeGolpe[8] = "Golpe 3";
+	}
+	printf("Usou %s", nomeGolpe);
+	int golpe;
 }
 
-// menu onde o jogador escolhe se quer atacar ou se defender antes do monstro
-// agir
+	// menu onde o jogador escolhe se quer atacar ou se defender antes do
+	// monstro agir
+int menu()
+{
+	char opcao[2 = '0'];
+	printf("
+	1 - Atacar\n
+	2 - Defender\n
+	3 - Fugir\n
+	Escolha: 
+	");
+	scanf(" %c", &escolha);
+
+	switch opcao 
+	{
+	case '1':
+	return 
+		break;
+	case '2':
+	
+		break;
+	case '3':
+		break;
+		
+	default:
+
+	}
+}
+fdzb
