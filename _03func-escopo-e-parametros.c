@@ -13,12 +13,15 @@
 char coracao[] = "❤️";
 char espada[] = "🗡️";
 char escudo[] = "🛡️";
+char barraCheia[] = "█";
+char barraVazia[] = "░";
 
 void exibirBarraDeVida(int atq, int def, int vida)
 {
-	printf(" | ########## - %d/100", vida);
-	 
-	
+	printf(" | ");
+	printf(" - %d/100", vida);
+
+
 }
 
 
@@ -30,6 +33,7 @@ int main()
 
 	srand(time(NULL));
 
+	exibirBarraDeVida(10, 10, 10);
 
 	return 0;
 }
