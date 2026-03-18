@@ -10,51 +10,57 @@
 #include <unistd.h>
 #endif
 
-char coracao[] = "❤️";
-char espada[] = "🗡️";
-char escudo[] = "🛡️";
-char barraCheia[] = "█";
-char barraVazia[] = "░";
-int vidaAtual = 50;
-int quantidadeBlocos = 10;;
-int vidaMax = 100;
-
-
 void desenharBarra()
 {
+	char coracao[] = "❤️";
+	char espada[] = "🗡️";
+	char escudo[] = "🛡️";
+	char barraCheia[] = "█";
+	char barraVazia[] = "░";
+	int quantidadeBlocos = 10;
+	int desenha = 0;
+	int vidaMax = 100;
+	int vidaAtual = 10;
+	int atqAtual = 40;
+	int defAtual = 30;
+	
 	int i;
-	int preenchido = (vidaAtual * quantidadeBlocos) / vidaMax;
-	int naoPreenchido = 10 - preenchido;
 	int j;
-
+	
 	for (j = 0; j < 3; j++)
 	{
 		if (j == 0)
 		{
 			printf(" %s", coracao);
+			desenha = vidaAtual;
 		}
 		else if (j == 1)
 		{
 			printf(" %s", espada);
+			desenha = atqAtual;
 		}
 		else
 		{
 			printf(" %s", escudo);
+			desenha = defAtual;
 		}
 		printf(" | ");
+
+		int preenchido = (desenha * quantidadeBlocos) / vidaMax;
+		int naoPreenchido = quantidadeBlocos - preenchido;
+
 		for (i = 0; i < preenchido; i++)
 		{
-			printf("%s", barraCheia);
+			printf(" %s", barraCheia);
 		}
-		printf(" - %d/100", vidaAtual);
-		for (i = preenchido; i < naoPreenchido; i++)
+
+		for (i = preenchido; i < quantidadeBlocos; i++)
 		{
-			printf("%s", barraCheia);
+			printf(" %s", barraVazia);
 		}
 		printf(" - %d/100", vidaAtual);
 		printf("\n");
 	}
-
 }
 
 
