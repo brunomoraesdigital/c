@@ -15,12 +15,45 @@ char espada[] = "🗡️";
 char escudo[] = "🛡️";
 char barraCheia[] = "█";
 char barraVazia[] = "░";
+int vidaAtual = 50;
+int quantidadeBlocos = 10;;
+int vidaMax = 100;
 
-void exibirBarraDeVida(int atq, int def, int vida)
+
+void desenharBarra()
 {
-	printf(" | ");
-	printf(" - %d/100", vida);
+	int i;
+	int preenchido = (vidaAtual * quantidadeBlocos) / vidaMax;
+	int naoPreenchido = 10 - preenchido;
+	int j;
 
+	for (j = 0; j < 3; j++)
+	{
+		if (j == 0)
+		{
+			printf(" %s", coracao);
+		}
+		else if (j == 1)
+		{
+			printf(" %s", espada);
+		}
+		else
+		{
+			printf(" %s", escudo);
+		}
+		printf(" | ");
+		for (i = 0; i < preenchido; i++)
+		{
+			printf("%s", barraCheia);
+		}
+		printf(" - %d/100", vidaAtual);
+		for (i = preenchido; i < naoPreenchido; i++)
+		{
+			printf("%s", barraCheia);
+		}
+		printf(" - %d/100", vidaAtual);
+		printf("\n");
+	}
 
 }
 
@@ -33,7 +66,7 @@ int main()
 
 	srand(time(NULL));
 
-	exibirBarraDeVida(10, 10, 10);
+	desenharBarra(10, 10, 10);
 
 	return 0;
 }
