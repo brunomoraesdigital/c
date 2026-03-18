@@ -61,14 +61,18 @@ void desenharBarra(int vidaAtual, int atqAtual, int defAtual)
 	}
 }
 
+void sortearAtributo()
+{
+	srand(time(NULL));
+	
+	return int atributo = (rand() % modificador) + 1;
+}
 
 int main()
 {
 #ifdef _WIN32
 	SetConsoleOutputCP(CP_UTF8);
 #endif
-
-	srand(time(NULL));
 
 	desenharBarra(10, 30, 40);
 
