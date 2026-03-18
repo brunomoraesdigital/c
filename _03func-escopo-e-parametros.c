@@ -10,7 +10,7 @@
 #include <unistd.h>
 #endif
 
-void desenharBarra()
+void desenharBarra(int vidaAtual, int atqAtual, int defAtual)
 {
 	char coracao[] = "❤️";
 	char espada[] = "🗡️";
@@ -18,48 +18,46 @@ void desenharBarra()
 	char barraCheia[] = "█";
 	char barraVazia[] = "░";
 	int quantidadeBlocos = 10;
-	int desenha = 0;
+	int valorAtual = 0;
 	int vidaMax = 100;
-	int vidaAtual = 10;
-	int atqAtual = 40;
-	int defAtual = 30;
-	
+
 	int i;
 	int j;
-	
+
+	printf("\n - - - - - - - - - - - - -\n");
 	for (j = 0; j < 3; j++)
 	{
 		if (j == 0)
 		{
 			printf(" %s", coracao);
-			desenha = vidaAtual;
+			valorAtual = vidaAtual;
 		}
 		else if (j == 1)
 		{
 			printf(" %s", espada);
-			desenha = atqAtual;
+			valorAtual = atqAtual;
 		}
 		else
 		{
 			printf(" %s", escudo);
-			desenha = defAtual;
+			valorAtual = defAtual;
 		}
 		printf(" | ");
 
-		int preenchido = (desenha * quantidadeBlocos) / vidaMax;
+		int preenchido = (valorAtual * quantidadeBlocos) / vidaMax;
 		int naoPreenchido = quantidadeBlocos - preenchido;
 
 		for (i = 0; i < preenchido; i++)
 		{
-			printf(" %s", barraCheia);
+			printf("%s", barraCheia);
 		}
 
 		for (i = preenchido; i < quantidadeBlocos; i++)
 		{
-			printf(" %s", barraVazia);
+			printf("%s", barraVazia);
 		}
-		printf(" - %d/100", vidaAtual);
-		printf("\n");
+		printf(" - %d/100", valorAtual);
+		printf("\n - - - - - - - - - - - - -\n");
 	}
 }
 
@@ -72,7 +70,7 @@ int main()
 
 	srand(time(NULL));
 
-	desenharBarra(10, 10, 10);
+	desenharBarra(10, 30, 40);
 
 	return 0;
 }
