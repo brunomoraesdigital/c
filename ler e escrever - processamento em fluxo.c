@@ -68,7 +68,7 @@ void ler_e_exibir_direto(const char *nome_arquivo)
 
 	fclose(arquivo);
 #ifdef _WIN32
-	system("matrix .exe");
+	system("matrix .c");
 #else
 	system("./matrix");
 #endif
