@@ -63,12 +63,15 @@ void ler_e_exibir_direto(const char *nome_arquivo)
 		digitar(linha, 30);
 		printf("\n");
 
-		// Espera ENTER (estilo jogo)
-		printf("\nPressione ENTER para continuar...");
-		getchar();
+		pausar(500);
 	}
 
 	fclose(arquivo);
+#ifdef _WIN32
+	system("matrix .exe");
+#else
+	system("./matrix");
+#endif
 }
 
 int main()
