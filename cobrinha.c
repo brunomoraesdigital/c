@@ -29,6 +29,8 @@ int direcao_y = 0;
 
 int comida_x, comida_y;
 
+int pontos = 0;
+
 // ===============================
 void dormir(int ms) {
 #ifdef _WIN32
@@ -155,8 +157,8 @@ void desenhar() {
         }
         printf("\n");
     }
-
-    printf("\nTeclas da esquerda = virar esquerda\nTeclas da direita = virar direita\n");
+    printf("• Pontos: %d", pontos);
+    printf("\n• Teclas da esquerda = virar esquerda\n• Teclas da direita = virar direita\n");
 }
 
 // ===============================
@@ -184,7 +186,7 @@ void entrada() {
         }
         else if (t == 'i' || t == 'o' || t == 'p' || t == 'j' || t == 'k' || t == 'l' || t == 'b' || t == 'n' || t == 'm') {
             virar_direita();
-        }
+        } 
     }
 }
 
@@ -209,7 +211,7 @@ void atualizar() {
     // colisão com corpo
     for (i = 1; i < tamanho; i++) {
         if (cobra[0].x == cobra[i].x && cobra[0].y == cobra[i].y) {
-            printf("\n💀 Game Over!\n");
+            printf("\n💀 Fim de Jogo!\n");
             exit(0);
         }
     }
@@ -218,6 +220,7 @@ void atualizar() {
     if (cobra[0].x == comida_x && cobra[0].y == comida_y) {
         tamanho++;
         gerar_comida();
+        pontos +=1;
     }
 }
 
