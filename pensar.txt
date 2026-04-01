@@ -1,19 +1,45 @@
-Guerreiro
-Espadachin
+                ----- Paladino
+                |
+Guerreiro   -----
+                |
+                ----- campeão
 
-cavaleiro
-campeão
+                ----- Templário
+                |
+Espadachin  -----
+                |
+                ----- cavaleiro
+                ----- bruxo
+                |
+Mago ------------
+                |
+                ----- feiticeiro
+                ----- cangaceiro
+                |
+Gatuno ----------
+                |
+                ----- assassino
+                ----- 
+                |
+Ladino ----------
+                |
+                ----- 
+                ----- 
+                |
+Ferreiro --------
+                |
+                ----- 
+                ----- 
+                |
+Alquimista ------
+                |
+                ----- 
 
-templario
-paladino
 
-Mago
 
-Gatuno
-Ladino
 
-assassino
-gangster
+
+
 
 
 
