@@ -13,7 +13,7 @@
 #endif
 
 #define LARGURA 67
-#define ALTURA 25
+#define ALTURA 20
 #define MAX_COBRA 1000
 #define TOTAL_ITENS 6
 
@@ -36,16 +36,22 @@ Item itens[TOTAL_ITENS];
 int tamanho = 5;
 int direcao_x = 1;
 int direcao_y = 0;
-
 int pontos = 0;
 
-// Recordes (persistentes entre partidas)
+// Recordes
 int recorde_pontos = 0;
-int recorde_tamanho = 0;
+int recorde_tamanho = 5;
+int recorde_tempo = 0;
+
+// Controle de tempo
+time_t inicio_partida;
+time_t pausa_inicio;
+int tempo_pausado_total;
+int tempo_final_gameover;
+int tempo_congelado_durante_pausa;
 
 int pausado = 0;
 int efeito_tempo = 0;
-
 int lento = 0;
 int rapido = 0;
 int congelado = 0;
@@ -54,7 +60,7 @@ int invertido = 0;
 int contador_bomba = 0;
 int mostrar_festa = 0;
 
-// Variáveis para o bug
+// Bug
 int bug_ativado = 0;
 int bug_tempo = 0;
 int dir_x_original = 0;
@@ -76,16 +82,14 @@ int game_over = 0;
 int cobra_azul = 0;
 time_t game_over_fim = 0;
 
-// ===============================
-// Controle de exibição do tamanho com indicador temporário
+// Indicador de mudança de tamanho
 time_t tempo_ultima_mudanca_tamanho = 0;
 int delta_tamanho = 0;
 
-// ===============================
 // Protótipos
 void evitar_colisao_apos_bug();
 int ocupado(int x, int y);
-void resetar_jogo();   // nova função para reiniciar mantendo recordes
+void resetar_jogo();
 
 // ===============================
 void dormir(int ms)
@@ -200,13 +204,15 @@ void inicializar()
         cobra[i].y = 10;
     }
     gerar_itens();
+    inicio_partida = time(NULL);
+    tempo_pausado_total = 0;
+    tempo_final_gameover = 0;
+    tempo_congelado_durante_pausa = 0;
 }
 
 // ===============================
-// Reinicia todas as variáveis do jogo, mantendo os recordes
 void resetar_jogo()
 {
-    // Reinicia variáveis de estado
     tamanho = 5;
     direcao_x = 1;
     direcao_y = 0;
@@ -228,15 +234,14 @@ void resetar_jogo()
     cobra_azul = 0;
     tempo_ultima_mudanca_tamanho = 0;
     delta_tamanho = 0;
+    tempo_congelado_durante_pausa = 0;
 
-    // Reinicia a cobra
     for (int i = 0; i < tamanho; i++)
     {
         cobra[i].x = 10 - i;
         cobra[i].y = 10;
     }
 
-    // Limpa destacamentos (vetor)
     for (int i = 0; i < MAX_COBRA; i++)
     {
         destacamentos[i].x = 0;
@@ -244,16 +249,17 @@ void resetar_jogo()
         destacamentos[i].fim = 0;
     }
 
-    // Gera novos itens
     gerar_itens();
+    inicio_partida = time(NULL);
+    tempo_pausado_total = 0;
+    tempo_final_gameover = 0;
 }
 
 // ===============================
 void desenhar()
 {
+    printf("\033[H");
     int x, y, i;
-
-    limpar();
 
     for (y = 0; y < ALTURA; y++)
     {
@@ -299,42 +305,41 @@ void desenhar()
                 continue;
 
             int desenhado = 0;
-            for (i = 0; i < tamanho; i++)
+            if (!cobra_azul)
             {
-                if (cobra[i].x == x && cobra[i].y == y)
+                for (i = 0; i < tamanho; i++)
                 {
-                    char *cor;
-                    if (cobra_azul)
+                    if (cobra[i].x == x && cobra[i].y == y)
                     {
-                        cor = "\033[34m";
+                        char *cor;
+                        if (bug_ativado)
+                        {
+                            cor = "\033[90m";
+                        }
+                        else if (lento)
+                        {
+                            cor = "\033[33m";
+                        }
+                        else if (rapido)
+                        {
+                            cor = "\033[31m";
+                        }
+                        else if (congelado)
+                        {
+                            cor = "\033[36m";
+                        }
+                        else if (invertido)
+                        {
+                            cor = "\033[38;5;130m";
+                        }
+                        else
+                        {
+                            cor = "\033[32m";
+                        }
+                        printf("%s%s\033[0m", cor, i == 0 ? "O" : "o");
+                        desenhado = 1;
+                        break;
                     }
-                    else if (bug_ativado)
-                    {
-                        cor = "\033[90m";
-                    }
-                    else if (lento)
-                    {
-                        cor = "\033[33m";
-                    }
-                    else if (rapido)
-                    {
-                        cor = "\033[31m";
-                    }
-                    else if (congelado)
-                    {
-                        cor = "\033[36m";
-                    }
-                    else if (invertido)
-                    {
-                        cor = "\033[38;5;130m";
-                    }
-                    else
-                    {
-                        cor = "\033[32m";
-                    }
-                    printf("%s%s\033[0m", cor, i == 0 ? "O" : "o");
-                    desenhado = 1;
-                    break;
                 }
             }
 
@@ -357,12 +362,14 @@ void desenhar()
         printf("\n");
     }
 
-    // Exibe Pontos e recorde
+    // Pontos
+    printf("\033[K");
     printf("• Pontos: %d", pontos);
     printf("\033[25G");
     printf("Recorde: %d\n", recorde_pontos);
 
-    // Exibe Tamanho da cobra com indicador temporário de mudança
+    // Tamanho
+    printf("\033[K");
     printf("• Tamanho: %03d", tamanho);
     time_t agora = time(NULL);
     int mostrar_delta = 0;
@@ -381,7 +388,42 @@ void desenhar()
     printf("\033[25G");
     printf("Recorde: %d\n", recorde_tamanho);
 
-    // Linha de estado unificada
+    // Tempo (HH:MM:SS)
+    printf("\033[K");
+    int tempo_decorrido;
+    if (pausado)
+    {
+        tempo_decorrido = tempo_congelado_durante_pausa;
+    }
+    else
+    {
+        tempo_decorrido = (int)(time(NULL) - inicio_partida) - tempo_pausado_total;
+        if (tempo_decorrido < 0) tempo_decorrido = 0;
+    }
+
+    int tempo_atual;
+    if (game_over)
+        tempo_atual = tempo_final_gameover;
+    else
+        tempo_atual = tempo_decorrido;
+
+    if (!game_over && !pausado && tempo_atual > recorde_tempo) {
+        recorde_tempo = tempo_atual;
+    }
+
+    int horas = tempo_atual / 3600;
+    int minutos = (tempo_atual % 3600) / 60;
+    int segundos = tempo_atual % 60;
+    printf("• Tempo: %02d:%02d:%02d", horas, minutos, segundos);
+    printf("\033[25G");
+
+    int rec_horas = recorde_tempo / 3600;
+    int rec_minutos = (recorde_tempo % 3600) / 60;
+    int rec_segundos = recorde_tempo % 60;
+    printf("Recorde: %02d:%02d:%02d\n", rec_horas, rec_minutos, rec_segundos);
+
+    // Estado
+    printf("\033[K");
     printf("• Estado: ");
     if (game_over)
     {
@@ -425,20 +467,27 @@ void desenhar()
         printf("\n");
     }
 
-    // Separador e controles (sempre exibidos)
+    // Separador
+    printf("\033[K");
     printf("- - - - - - - - - - - - - - - - - - -\n");
 
-    // Mensagem diferente se estiver em game over
+    // Mensagem final
     if (game_over)
     {
+        printf("\033[K");
         printf("\033[33m• Fim de jogo! Pressione ESPAÇO para reiniciar\033[0m\n");
+        printf("\033[J");
     }
     else
     {
-        printf("\033[90m• Teclas da esquerda = virar esquerda\n• Teclas da direita = virar direita\n• Tecla espaço = pausar o jogo\033[0m");
+        printf("\033[K");
+        printf("\033[90m• Teclas da esquerda = virar esquerda\n");
+        printf("\033[K");
+        printf("• Teclas da direita = virar direita\n");
+        printf("\033[K");
+        printf("• Tecla espaço = pausar o jogo\033[0m");
     }
 
-    printf("\033[40;0H");
     fflush(stdout);
 }
 
@@ -499,7 +548,6 @@ void evitar_colisao_apos_bug()
 
     if (ocupado(prox_x, prox_y))
     {
-        // Tenta esquerda
         int dx_esq = direcao_x, dy_esq = direcao_y;
         if (direcao_x == 1)
         {
@@ -532,7 +580,6 @@ void evitar_colisao_apos_bug()
             return;
         }
 
-        // Tenta direita
         int dx_dir = direcao_x, dy_dir = direcao_y;
         if (direcao_x == 1)
         {
@@ -574,7 +621,6 @@ void entrada()
     {
         char t = getch();
 
-        // Se o jogo acabou, apenas escuta espaço para reiniciar
         if (game_over)
         {
             if (t == ' ')
@@ -585,7 +631,21 @@ void entrada()
         }
 
         if (t == ' ')
-            pausado = !pausado;
+        {
+            if (!pausado)  // Ativando a pausa
+            {
+                int tempo_decorrido = (int)(time(NULL) - inicio_partida) - tempo_pausado_total;
+                if (tempo_decorrido < 0) tempo_decorrido = 0;
+                tempo_congelado_durante_pausa = tempo_decorrido;
+                pausado = 1;
+            }
+            else  // Desativando a pausa
+            {
+                tempo_pausado_total = (int)(time(NULL) - inicio_partida) - tempo_congelado_durante_pausa;
+                if (tempo_pausado_total < 0) tempo_pausado_total = 0;
+                pausado = 0;
+            }
+        }
 
         if (t == 'q' || t == 'w' || t == 'e' || t == 'a' || t == 's' || t == 'd' || t == 'z'
             || t == 'x' || t == 'c')
@@ -614,7 +674,6 @@ void atualizar()
     if (game_over)
         return;
 
-    // Tratamento do efeito bug
     if (bug_ativado)
     {
         bug_tempo--;
@@ -632,7 +691,6 @@ void atualizar()
             }
             direcao_x = dir_x_original;
             direcao_y = dir_y_original;
-            evitar_colisao_apos_bug();
         }
     }
 
@@ -644,7 +702,6 @@ void atualizar()
     if (congelado)
         return;
 
-    // remove destacamentos expirados
     for (int i = 0; i < num_destacamentos; i++)
     {
         if (time(NULL) >= destacamentos[i].fim)
@@ -655,17 +712,14 @@ void atualizar()
         }
     }
 
-    // move o corpo
     for (int i = tamanho - 1; i > 0; i--)
     {
         cobra[i] = cobra[i - 1];
     }
 
-    // move a cabeça
     cobra[0].x += direcao_x;
     cobra[0].y += direcao_y;
 
-    // teleporte nas bordas
     if (cobra[0].x <= 0)
         cobra[0].x = LARGURA - 2;
     if (cobra[0].x >= LARGURA - 1)
@@ -675,19 +729,26 @@ void atualizar()
     if (cobra[0].y >= ALTURA - 1)
         cobra[0].y = 1;
 
-    // colisão com o próprio corpo
+    // Colisão com o próprio corpo
     for (int i = 1; i < tamanho; i++)
     {
         if (cobra[0].x == cobra[i].x && cobra[0].y == cobra[i].y)
         {
+            if (!game_over)
+            {
+                int tempo_total = (int)(time(NULL) - inicio_partida) - tempo_pausado_total;
+                if (tempo_total < 0) tempo_total = 0;
+                tempo_final_gameover = tempo_total;
+            }
             game_over = 1;
             game_over_fim = time(NULL) + 2;
             cobra_azul = 0;
+            delta_tamanho = 0;
             return;
         }
     }
 
-    // colisão com itens
+    // Colisão com itens
     for (int i = 0; i < TOTAL_ITENS; i++)
     {
         if (cobra[0].x == itens[i].x && cobra[0].y == itens[i].y)
@@ -696,7 +757,7 @@ void atualizar()
 
             switch (itens[i].tipo)
             {
-            case 0:         // fruta
+            case 0:
                 tamanho++;
                 pontos++;
                 if (pontos > recorde_pontos) recorde_pontos = pontos;
@@ -706,7 +767,7 @@ void atualizar()
                 tempo_ultima_mudanca_tamanho = time(NULL);
                 break;
 
-            case 1:         // BUG
+            case 1:
                 {
                     dir_x_original = direcao_x;
                     dir_y_original = direcao_y;
@@ -739,7 +800,7 @@ void atualizar()
                 efeito_tempo = 50;
                 break;
 
-            case 4:         // bomba
+            case 4:
                 {
                     contador_bomba++;
                     int dano = 1 << (contador_bomba - 1);
@@ -795,19 +856,13 @@ int main()
 #endif
 
     inicializar();
-    printf("\033[?25l"); // esconde cursor
+    printf("\033[?25l");
 
     while (1)
     {
         entrada();
         atualizar();
         desenhar();
-
-        // Não sai do loop; se game_over, a função entrada() já trata o espaço
-        // O loop continua, mas o jogo fica parado até reiniciar.
-        // Aguarda o tempo de exibição do game over antes de permitir reinício?
-        // Vamos fazer: durante o game_over, não há atualização, só desenho e espera.
-        // O resetar_jogo() limpa game_over e recomeça.
 
         int velocidade = 80;
         if (lento) velocidade = 160;
