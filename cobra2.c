@@ -864,8 +864,8 @@ int main()
         atualizar();
         desenhar();
 
-        int velocidade = 80;
-        if (lento) velocidade = 160;
+        int velocidade = 100;
+        if (lento) velocidade = 200;
         if (rapido) velocidade = 40;
 
         dormir(velocidade);
