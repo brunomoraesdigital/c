@@ -1,0 +1,408 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <unistd.h>
+#endif
+
+// Função para pausar (cross-platform)
+void pausar(int milissegundos) {
+#ifdef _WIN32
+    Sleep(milissegundos);
+#else
+    usleep(milissegundos * 1000);
+#endif
+}
+
+// Função para efeito de digitação
+void digitar(const char *texto, int velocidade) {
+    int i = 0;
+    while (texto[i] != '\0') {
+        printf("%c", texto[i]);
+        fflush(stdout);
+        pausar(velocidade);
+        i++;
+    }
+}
+
+// Função de barra de progresso
+void barra_progresso() {
+    int i, j;
+
+    for (i = 0; i <= 100; i++) {
+        printf("\r[");
+        for (j = 0; j < 50; j++) {
+            if (j < i / 2) {
+                printf("#");
+            } else {
+                printf(" ");
+            }
+        }
+        printf("] %d%%", i);
+        fflush(stdout);
+        pausar(30);
+    }
+    printf("\n");
+}
+
+// Função para limpar a tela (usada apenas pelo código impresso)
+void limpar_tela() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
+
+int main() {
+#ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+#endif
+
+    pausar(500);
+    digitar("#include <stdio.h>\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("#ifdef _WIN32\n", 40);
+    pausar(500);
+    digitar("#include <windows.h>\n", 40);
+    pausar(500);
+    digitar("#else\n", 40);
+    pausar(500);
+    digitar("#include <unistd.h>\n", 40);
+    pausar(500);
+    digitar("#endif\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("#define LARGURA 67\n", 40);
+    pausar(500);
+    digitar("#define ALTURA 25\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("void pausar(int ms) {\n", 40);
+    pausar(500);
+    digitar("#ifdef _WIN32\n", 40);
+    pausar(500);
+    digitar("    Sleep(ms);\n", 40);
+    pausar(500);
+    digitar("#else\n", 40);
+    pausar(500);
+    digitar("    usleep(ms * 1000);\n", 40);
+    pausar(500);
+    digitar("#endif\n", 40);
+    pausar(500);
+    digitar("}\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("void limpar_tela() {\n", 40);
+    pausar(500);
+    digitar("#ifdef _WIN32\n", 40);
+    pausar(500);
+    digitar("    system(\"cls\");\n", 40);
+    pausar(500);
+    digitar("#else\n", 40);
+    pausar(500);
+    digitar("    system(\"clear\");\n", 40);
+    pausar(500);
+    digitar("#endif\n", 40);
+    pausar(500);
+    digitar("}\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("float limitar(float valor, float max) {\n", 40);
+    pausar(500);
+    digitar("    if (valor > max) return max;\n", 40);
+    pausar(500);
+    digitar("    if (valor < -max) return -max;\n", 40);
+    pausar(500);
+    digitar("    return valor;\n", 40);
+    pausar(500);
+    digitar("}\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("int main() {\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("#ifdef _WIN32\n", 40);
+    pausar(500);
+    digitar("    SetConsoleOutputCP(CP_UTF8);\n", 40);
+    pausar(500);
+    digitar("#endif\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("    float x = 20, y = 5;\n", 40);
+    pausar(500);
+    digitar("    float vx = 1.2, vy = 0;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("    float vx_inicial = 1.2;\n", 40);
+    pausar(500);
+    digitar("    float vy_inicial = -2.5;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("    float gravidade = 0.2;\n", 40);
+    pausar(500);
+    digitar("    float quique = 0.85;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("    int vida = 10;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("    int raquete_largura = 9;\n", 40);
+    pausar(500);
+    digitar("    int raquete_x = LARGURA / 2 - raquete_largura / 2;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("    int rastro[ALTURA][LARGURA];\n", 40);
+    pausar(500);
+    digitar("    int i, j;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("    for (i = 0; i < ALTURA; i++)\n", 40);
+    pausar(500);
+    digitar("        for (j = 0; j < LARGURA; j++)\n", 40);
+    pausar(500);
+    digitar("            rastro[i][j] = 0;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("    while (1) {\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("        // IA da raquete\n", 40);
+    pausar(500);
+    digitar("        int centro = raquete_x + raquete_largura / 2;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("        if (x > centro) raquete_x++;\n", 40);
+    pausar(500);
+    digitar("        else if (x < centro) raquete_x--;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("        if (raquete_x < 0) raquete_x = 0;\n", 40);
+    pausar(500);
+    digitar("        if (raquete_x + raquete_largura >= LARGURA)\n", 40);
+    pausar(500);
+    digitar("            raquete_x = LARGURA - raquete_largura;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("        // física\n", 40);
+    pausar(500);
+    digitar("        vy += gravidade;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("        float prox_x = x + vx;\n", 40);
+    pausar(500);
+    digitar("        float prox_y = y + vy;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("        // colisão lateral\n", 40);
+    pausar(500);
+    digitar("        if (prox_x < 0 || prox_x >= LARGURA) {\n", 40);
+    pausar(500);
+    digitar("            vx = -vx;\n", 40);
+    pausar(500);
+    digitar("            prox_x = x + vx;\n", 40);
+    pausar(500);
+    digitar("        }\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("        // colisão com raquete\n", 40);
+    pausar(500);
+    digitar("        if (vy > 0 && prox_y >= ALTURA - 2) {\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("            if ((int)prox_x >= raquete_x &&\n", 40);
+    pausar(500);
+    digitar("                (int)prox_x <= raquete_x + raquete_largura) {\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("                y = ALTURA - 3;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("                vy = vy_inicial;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("                float impacto = (prox_x - (raquete_x + raquete_largura / 2)) / 4.0;\n", 40);
+    pausar(500);
+    digitar("                vx += impacto;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("                vx = limitar(vx, vx_inicial);\n", 40);
+    pausar(500);
+    digitar("                vy = limitar(vy, -vy_inicial);\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("                vida++; // ganha vida\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("            } else if (prox_y >= ALTURA - 1) {\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("                y = ALTURA - 1;\n", 40);
+    pausar(500);
+    digitar("                vy = -vy * quique;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("                vida--; // perde vida\n", 40);
+    pausar(500);
+    digitar("            }\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("        } else {\n", 40);
+    pausar(500);
+    digitar("            x = prox_x;\n", 40);
+    pausar(500);
+    digitar("            y = prox_y;\n", 40);
+    pausar(500);
+    digitar("        }\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("        // fim de jogo\n", 40);
+    pausar(500);
+    digitar("        if (vida <= 0) {\n", 40);
+    pausar(500);
+    digitar("            limpar_tela();\n", 40);
+    pausar(500);
+    digitar("            printf(\"\\n\\n      FIM DE JOGO\\n\");\n", 40);
+    pausar(500);
+    digitar("            printf(\"Vida chegou a zero\\n\");\n", 40);
+    pausar(500);
+    digitar("            break;\n", 40);
+    pausar(500);
+    digitar("        }\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("        // rastro\n", 40);
+    pausar(500);
+    digitar("        int ix = (int)x;\n", 40);
+    pausar(500);
+    digitar("        int iy = (int)y;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("        if (ix >= 0 && ix < LARGURA && iy >= 0 && iy < ALTURA)\n", 40);
+    pausar(500);
+    digitar("            rastro[iy][ix] = 5;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("        for (i = 0; i < ALTURA; i++)\n", 40);
+    pausar(500);
+    digitar("            for (j = 0; j < LARGURA; j++)\n", 40);
+    pausar(500);
+    digitar("                if (rastro[i][j] > 0)\n", 40);
+    pausar(500);
+    digitar("                    rastro[i][j]--;\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("        limpar_tela();\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("        // desenha\n", 40);
+    pausar(500);
+    digitar("        for (i = 0; i < ALTURA; i++) {\n", 40);
+    pausar(500);
+    digitar("            for (j = 0; j < LARGURA; j++) {\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("                if ((int)x == j && (int)y == i) {\n", 40);
+    pausar(500);
+    digitar("                    printf(\"O\");\n", 40);
+    pausar(500);
+    digitar("                }\n", 40);
+    pausar(500);
+    digitar("                else if (i == ALTURA - 1 &&\n", 40);
+    pausar(500);
+    digitar("                         j >= raquete_x &&\n", 40);
+    pausar(500);
+    digitar("                         j <= raquete_x + raquete_largura) {\n", 40);
+    pausar(500);
+    digitar("                    printf(\"=\");\n", 40);
+    pausar(500);
+    digitar("                }\n", 40);
+    pausar(500);
+    digitar("                else {\n", 40);
+    pausar(500);
+    digitar("                    if (rastro[i][j] >= 4) printf(\"@\");\n", 40);
+    pausar(500);
+    digitar("                    else if (rastro[i][j] >= 3) printf(\"#\");\n", 40);
+    pausar(500);
+    digitar("                    else if (rastro[i][j] >= 2) printf(\"*\");\n", 40);
+    pausar(500);
+    digitar("                    else if (rastro[i][j] >= 1) printf(\".\");\n", 40);
+    pausar(500);
+    digitar("                    else printf(\" \");\n", 40);
+    pausar(500);
+    digitar("                }\n", 40);
+    pausar(500);
+    digitar("            }\n", 40);
+    pausar(500);
+    digitar("            printf(\"\\n\");\n", 40);
+    pausar(500);
+    digitar("        }\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("        printf(\"Vida: %d\\n\", vida);\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("        pausar(40);\n", 40);
+    pausar(500);
+    digitar("    }\n", 40);
+    pausar(500);
+    digitar("\n", 40);
+    pausar(500);
+    digitar("    return 0;\n", 40);
+    pausar(500);
+    digitar("}\n", 40);
+
+    // Após a digitação do código, exibe uma barra de progresso e mensagem
+    pausar(500);
+    digitar("Acessando dados secretos...\n", 30);
+    pausar(500);
+    barra_progresso();
+    pausar(500);
+    digitar("\nAcesso concedido!\n", 40);
+
+    return 0;
+}

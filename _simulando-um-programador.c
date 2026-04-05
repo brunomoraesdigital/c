@@ -9,7 +9,7 @@
 #endif
 
 #define LARGURA 67
-#define ALTURA 25				// Descomentado
+#define ALTURA 25
 
 void pausar(int milissegundos)
 {

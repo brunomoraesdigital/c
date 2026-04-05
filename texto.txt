@@ -1,0 +1,4 @@
+Olá, Bruno!
+Esse é um teste.
+Cada linha será exibida com efeito.
+Fica bem estilo diálogo de jogo.
